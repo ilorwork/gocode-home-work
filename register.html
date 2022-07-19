@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hug-li Course registration</title>
+  </head>
+  <body>
+    <a href="index.html">
+      <button>Back to courses list</button>
+    </a>
+    <h1>Become a student</h1>
+    <form action="/index.html">
+      <div>
+        <label for="courses"><b>Choose a course:</b></label>
+        <br />
+        <select id="courses" required>
+          <option value="">--Please choose an option--</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="Java Script">Java Script</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="Name"><b>Name:</b></label>
+        <br />
+        <input id="Name" required />
+      </div>
+      <br />
+      <div>
+        <label for="lastName"><b>Last Name:</b></label>
+        <br />
+        <input id="lastName" required />
+      </div>
+      <br />
+      <div>
+        <label for="email"><b>Email:</b></label>
+        <br />
+        <input type="email" id="email" />
+      </div>
+      <br />
+      <div>
+        <label for="age"><b>Age:</b></label>
+        <br />
+        <input type="number" id="age" min="1" max="120" />
+      </div>
+      <br />
+      <div>
+        <input type="submit" value="Send" />
+      </div>
+    </form>
+  </body>
+</html>
