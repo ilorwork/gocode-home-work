@@ -103,6 +103,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  /* In order to add padding while using 50% width, I had to sub the padding in both sides in order to actually get 50% width. */
   width: calc(50% - 2rem * 2);
   height: auto;
 }
