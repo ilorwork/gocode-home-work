@@ -161,3 +161,57 @@ body {
 .score-container > .score {
   letter-spacing: 0.25em;
 }
+
+.our-portfolio-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.our-secvices-logo {
+  width: 5rem;
+  margin-top: 7%;
+}
+
+.our-portfolio-container > h2 {
+  letter-spacing: 0.78em;
+  text-transform: uppercase;
+}
+
+.our-portfolio-container > p {
+  font-size: 16px;
+  width: 55%;
+  line-height: 206%;
+}
+
+.our-portfolio-subjects-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 3rem;
+}
+
+/* @media only screen and (max-width: 600px) {
+  .our-portfolio-subjects {
+    flex-direction: column;
+  }
+} */
+
+.our-portfolio-subjects {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 20rem;
+  height: 60px;
+}
+
+.our-portfolio-subjects > p {
+  font-weight: 600;
+}
