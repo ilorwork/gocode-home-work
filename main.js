@@ -15,7 +15,30 @@
 // });
 // console.log(powedArr);
 
-// 2 - no need to answer - almog said.
+// // 2
+// // Here I tried to solve this using custome sorting or somthing.
+// const sortStringList = (arr, orderByASC) => {
+//   arr.sort((item) => {
+//     if(item > )
+//   });
+//   if (!orderByASC) {
+//     arr.reverse();
+//   }
+//   return arr;
+// };
+
+// // The first way.
+// const sortStringList = (arr, orderByASC) => {
+//   arr.sort();
+//   if (!orderByASC) {
+//     arr.reverse();
+//   }
+//   return arr;
+// };
+
+// const namesArr = ["Avi", "Dani", "shuki", "mOshe", "arik"];
+// console.log(sortStringList(namesArr, true));
+// console.log(sortStringList(namesArr, false));
 
 // // 3
 // const last = (arr, num) => {
@@ -91,15 +114,16 @@
 // console.log(findPolindroms(wordsArr));
 
 // // 7
-// // const delAnimals = (animals, animalsToDelete) => {
-// //   return animals.filter(
-// //     (animal) => animalsToDelete.findIndex((animal) => animal) === -1
-// //   );
-// // };
-
 // const delAnimals = (animals, animalsToDelete) => {
-//   return animals.filter((animal) => animalsToDelete.indexOf(animal) === -1);
+//   return animals.filter((animal) => {
+//     return animalsToDelete.findIndex((an) => an === animal) === -1;
+//   });
 // };
+
+// // Another way using indexOf method.
+// // const delAnimals = (animals, animalsToDelete) => {
+// //   return animals.filter((animal) => animalsToDelete.indexOf(animal) === -1);
+// // };
 
 // const animalsArr = ["lion", "camel", "fly", "butterfly", "zebra", "monky"];
 // const animalsToDelArr = ["fly", "butterfly"];
@@ -130,24 +154,24 @@
 
 // 9 - seemed like we need to use sort
 
-// 10
-// a:
-const a = [1, 2];
-let b = [];
-b = a;
-console.log(b);
+// // 10
+// // a:
+// const a = [1, 2];
+// let b = [];
+// b = a;
+// console.log(b);
 
-// b:
-const c = [1, 2];
-let d = c.map((o) => o);
-console.log(d);
+// // b:
+// const c = [1, 2];
+// let d = c.map((o) => o);
+// console.log(d);
 
-// c:
-const e = [1, 2];
-let f = [];
+// // c:
+// const e = [1, 2];
+// let f = [];
 
-for (let i = 0; i < e.length; i++) {
-  f[i] = e[i];
-}
+// for (let i = 0; i < e.length; i++) {
+//   f[i] = e[i];
+// }
 
-console.log(f);
+// console.log(f);
