@@ -219,26 +219,26 @@ body {
   font-weight: 600;
 }
 
-.galery-container {
+.gallery-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 /* 
-.galery-items-collection {
+.gallery-items-collection {
   width: 50%;
   display: flex;
 } */
 
-.galery-item {
+.gallery-item {
   width: calc(100% / 6);
   min-width: 14rem;
   height: 300px;
 }
 
-.galery-item-with-content {
+.gallery-item-with-content {
   position: relative;
-  background-image: url("./assetes/galery - city backround.png");
+  background-image: url("./assetes/gallery - city backround.png");
 }
 
 .yello-bg-content {
@@ -251,7 +251,7 @@ body {
   height: 70%;
 }
 
-.galery-item-content {
+.gallery-item-content {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -265,7 +265,7 @@ body {
 }
 
 /* @media only screen and (max-width: 600px) {
-  .galery-item {
+  .gallery-item {
     width: 100%;
   }
 } */
