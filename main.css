@@ -215,3 +215,54 @@ body {
 .our-portfolio-subjects > p {
   font-weight: 600;
 }
+
+.galery-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* 
+.galery-items-collection {
+  width: 50%;
+  display: flex;
+} */
+
+.galery-item {
+  width: calc(100% / 6);
+  min-width: 14rem;
+  height: 300px;
+}
+
+.galery-item-with-content {
+  position: relative;
+  background-image: url("./assetes/galery - city backround.png");
+}
+
+.yello-bg-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: yellow;
+  width: 70%;
+  height: 70%;
+}
+
+.galery-item-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 90%;
+  height: 55%;
+  text-align: center;
+  font-size: 12px;
+  line-height: 180%;
+}
+
+/* @media only screen and (max-width: 600px) {
+  .galery-item {
+    width: 100%;
+  }
+} */
