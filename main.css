@@ -74,7 +74,10 @@ body {
 }
 
 .our-services-container > h2 {
-  letter-spacing: 0.78em;
+  /* Note!!!!! letter spacing is braking the respnsivity of the page
+    because it's adding an additional space at the end of any row! */
+  /* letter-spacing: 0.78em; */
+  text-align: center;
 }
 
 .our-services-container > p {
