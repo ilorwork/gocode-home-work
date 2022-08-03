@@ -236,26 +236,25 @@ body {
   height: 300px;
 }
 
-.gallery-item-with-content {
+.gallery-item-content-container {
   position: relative;
   background-image: url("./assetes/gallery - city backround.png");
 }
 
-.yello-bg-content {
+.gallery-item-element {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.yello-bg-content {
   background-color: yellow;
   width: 70%;
   height: 70%;
 }
 
 .gallery-item-content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   background-color: #fff;
   width: 90%;
   height: 55%;
