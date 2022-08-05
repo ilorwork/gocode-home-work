@@ -1,1 +1,110 @@
+* {
+  box-sizing: border-box;
+}
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+/* .conrainer {
+  max-width: 600px;
+} */
+
+header {
+  display: flex;
+  width: 30rem;
+  height: 3rem;
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+header > input {
+  flex: 9;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  /* padding-right: 50px; */
+  /* border-radius: 40px; */
+}
+
+.add-todo-item-btn {
+  flex: 1;
+  background-color: rgb(108, 108, 255);
+  border-radius: 12px;
+  /* margin-left: -43px; */
+  /* margin-left: -1rem; */
+}
+
+.add-todo-item-btn:hover {
+  background-color: rgb(133, 133, 252);
+  cursor: pointer;
+}
+
+.status-list-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-list-nav > button {
+  flex: 1;
+  /* width: 30rem; */
+  height: 2rem;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.todo-list-btn {
+  background-color: rgb(51, 181, 51);
+}
+
+.todo-list-btn:hover {
+  background-color: rgb(99, 235, 99);
+  cursor: pointer;
+}
+
+.done-list-btn {
+  background-color: rgb(108, 108, 255);
+}
+
+.done-list-btn:hover {
+  background-color: rgb(133, 133, 252);
+  cursor: pointer;
+}
+
+.page-list {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  height: 350px;
+  border: 1px solid gray;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 30rem;
+  min-height: 2rem;
+  border: 1px solid rgb(216, 215, 215);
+}
+
+.switch-color-btn {
+  width: 100%;
+  height: 2rem;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  background-color: rgb(108, 108, 255);
+}
+
+.switch-color-btn:hover {
+  background-color: rgb(133, 133, 252);
+  cursor: pointer;
+}
