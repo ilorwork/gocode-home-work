@@ -27,7 +27,6 @@ let doneListArr = [];
 
 const doneListBtn = document.querySelector(".done-list-btn");
 doneListBtn.addEventListener("click", () => {
-  //   doneListArr = todoArr.splice(1, 4);
   reRenderDoneList(doneListArr);
 });
 
@@ -39,15 +38,6 @@ const reRenderDoneList = (doneList) => {
 };
 
 const addDoneItem = (doneitem) => {
-  //   const doneItemElement = document.createElement("div");
-  //   doneItemElement.className = "done-item";
-
-  //   const itemBtnsContainer = document.createElement("div");
-  //   itemBtnsContainer.className = "item-btns-container";
-
-  //   const itemRemoveBtn = document.createElement("button");
-  //   itemRemoveBtn.className = "item-remove-btn";
-  //   itemRemoveBtn.innerText = "remove";
   const todoItemElement = document.createElement("div");
   todoItemElement.className = "todo-item";
 
@@ -70,14 +60,6 @@ const addDoneItem = (doneitem) => {
 
   addItemUnDoneListener(itemUndoneBtn, doneitem.id, todoItemElement);
   addRemoveDoneItemListener(itemRemoveBtn, doneitem.id);
-
-  //   doneItemElement.innerText = doneitem.value;
-  //   itemBtnsContainer.appendChild(itemRemoveBtn);
-  //   itemBtnsContainer.appendChild(itemUndoneBtn);
-  //   doneItemElement.appendChild(itemBtnsContainer);
-  //   pageListElement.appendChild(doneItemElement);
-
-  //   addRemoveItemListener(itemRemoveBtn, doneitem.id, doneItemElement);
 };
 
 addTodoBtn.addEventListener("click", () => {
@@ -85,7 +67,6 @@ addTodoBtn.addEventListener("click", () => {
   const todoItem = { value: addTodoInput.value, isDone: false, id: Date.now() };
   todoArr.push(todoItem);
 
-  //   addTodoItem(todoArr[todoArr.length - 1]);
   reRenderToDoList(todoArr);
 
   addTodoInput.value = "";
@@ -109,12 +90,6 @@ const addTodoItem = (todoItem) => {
   const itemRemoveBtn = document.createElement("button");
   itemRemoveBtn.className = "item-remove-btn";
   itemRemoveBtn.innerText = "remove";
-  //   const svg = document.createElement("embed");
-  //   svg.src =
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlyYTpYaf1zvyXHKF4LZTAQSwkRoVCKsvR6DjdfvA&s";
-  //   svg.width = "10rem";
-  //   svg.height = "10rem";
-  //   itemRemoveBtn.appendChild(svg);
 
   const itemDoneBtn = document.createElement("button");
   itemDoneBtn.className = "item-done-btn";
@@ -141,7 +116,6 @@ const addRemoveItemListener = (element, itemId) => {
 const addItemIsDoneListener = (element, itemId) => {
   element.addEventListener("click", () => {
     const itemIndex = todoArr.findIndex((item) => item.id === itemId);
-    //debugger;
     const splicedArr = todoArr.splice(itemIndex, 1);
 
     // Add the returning spliced array into doneListArr
@@ -161,7 +135,6 @@ const addRemoveDoneItemListener = (element, itemId) => {
 const addItemUnDoneListener = (element, itemId) => {
   element.addEventListener("click", () => {
     const itemIndex = doneListArr.findIndex((item) => item.id === itemId);
-    //debugger;
     const splicedArr = doneListArr.splice(itemIndex, 1);
 
     // Add the returning spliced array into todoArr
@@ -169,3 +142,26 @@ const addItemUnDoneListener = (element, itemId) => {
     reRenderDoneList(doneListArr);
   });
 };
+
+const switchColorBtn = document.querySelector(".switch-color-btn");
+let isLightMode = false;
+
+switchColorBtn.addEventListener("click", () => {
+  if (isLightMode) {
+    document.body.style.backgroundColor = "initial";
+    pageListElement.style.backgroundColor = "initial";
+    pageListElement.style.color = "initial";
+    addTodoInput.style.backgroundColor = "initial";
+    addTodoInput.parentElement.style.backgroundColor = "initial";
+    addTodoInput.style.color = "initial";
+    isLightMode = !isLightMode;
+  } else {
+    document.body.style.backgroundColor = "black";
+    pageListElement.style.backgroundColor = "#262424";
+    pageListElement.style.color = "white";
+    addTodoInput.style.backgroundColor = "#262424";
+    addTodoInput.parentElement.style.backgroundColor = "#262424";
+    addTodoInput.style.color = "white";
+    isLightMode = !isLightMode;
+  }
+});
