@@ -28,11 +28,8 @@ addTodoBtn.addEventListener("click", () => {
 
   const todoItem = { value: addTodoInput.value, isDone: false, id: Date.now() };
   todoArr.push(todoItem);
-  //   pageListElement.innerHTML = "";
 
   addTodoItem(todoArr[todoArr.length - 1]);
-
-  //   todoArr.forEach((item) => {});
 
   addTodoInput.value = "";
   addTodoBtn.parentElement.removeChild(addTodoBtn);
@@ -66,19 +63,13 @@ const addTodoItem = (todoItem) => {
   todoItemElement.appendChild(itemBtnsContainer);
   pageListElement.appendChild(todoItemElement);
 
-  //   pageListElement.innerHTML += `<div class="todo-item">${todoArr[0].value}
-  //   <div class="item-btns-container">
-  //     <button class="item-remove-btn">remove</button>
-  //     <button class="item-done-btn">done</button>
-  //   </div>`;
   addRemoveItemListener(itemRemoveBtn, todoItem.id, todoItemElement);
 };
 
-const addRemoveItemListener = (element, itemId /* , elementToDelete */) => {
+const addRemoveItemListener = (element, itemId) => {
   element.addEventListener("click", () => {
     const itemIndex = todoArr.findIndex((item) => item.id === itemId);
     todoArr.splice(itemIndex, 1);
-    //elementToDelete.parentElement.removeChild(elementToDelete);
     reRenderToDoList(todoArr);
   });
 };
