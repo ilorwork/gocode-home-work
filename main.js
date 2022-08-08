@@ -144,10 +144,10 @@ const addItemUnDoneListener = (element, itemId) => {
 };
 
 const switchColorBtn = document.querySelector(".switch-color-btn");
-let isLightMode = false;
+let isLightMode = true;
 
 switchColorBtn.addEventListener("click", () => {
-  if (isLightMode) {
+  if (!isLightMode) {
     document.body.style.backgroundColor = "initial";
     pageListElement.style.backgroundColor = "initial";
     pageListElement.style.color = "initial";
@@ -158,10 +158,11 @@ switchColorBtn.addEventListener("click", () => {
   } else {
     document.body.style.backgroundColor = "black";
     pageListElement.style.backgroundColor = "#262424";
-    pageListElement.style.color = "white";
+    pageListElement.style.color = "rgb(219 216 216)";
+    // itemBtnsContainer.style.color = "#cdcdcd";
     addTodoInput.style.backgroundColor = "#262424";
     addTodoInput.parentElement.style.backgroundColor = "#262424";
-    addTodoInput.style.color = "white";
+    addTodoInput.style.color = "rgb(219 216 216)";
     isLightMode = !isLightMode;
   }
 });
