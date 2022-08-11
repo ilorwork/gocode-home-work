@@ -3,6 +3,10 @@
 }
 
 body {
+  background-image: url("./assets/top-view-list-written-black-notebook-black-table-free-space\ \(3\).jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-size: 2400px 900px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +30,7 @@ header {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 7px;
   margin-bottom: 0.5rem;
+  background-color: white;
 }
 
 header > input {
@@ -68,17 +73,31 @@ header > input:focus {
   border: none;
   border-radius: 4px;
   font-size: 18px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .todo-list-btn {
   background-color: rgb(51, 181, 51);
+  box-shadow: rgb(110 228 61 / 84%) 0px 21px 20px;
 }
 
 .todo-list-btn:hover {
-  background-color: rgb(99, 235, 99);
+  background-color: #39d353;
 }
+/* 
+.todo-list-btn:focus {
+  background-color: #dee8df;
+} */
+/* 
+.todo-list-btn:active {
+  background-color: #dee8df;
+} */
+
+/* .todo-list-btn:hover:after {
+  content: " list";
+
+} */
 
 .done-list-btn {
   background-color: rgb(108, 108, 255);
@@ -88,17 +107,12 @@ header > input:focus {
   background-color: rgb(133, 133, 252);
 }
 
-.helper {
+.page-list {
   height: 350px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgb(71 192 0) 0px 5px 15px;
+  background-color: white;
   overflow-y: auto;
   border-radius: 7px;
-}
-
-.page-list {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
   padding: 0.5rem;
 }
 
@@ -159,4 +173,32 @@ header > input:focus {
 
 .switch-color-btn:hover {
   background-color: rgb(133, 133, 252);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(78, 81, 240, 0.541);
+  background: rgba(70, 192, 0, 0.6);
+  /* background: rgb(146, 141, 141); */
+  /* for dark */
+  /* background: rgba(137, 139, 255, 0.541); */
+  /* background: rgba(133, 133, 252, 0.541); */
+  border-radius: 14px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: rgb(130, 11, 11); */
+  background: rgb(146, 141, 141);
+  /* background: rgba(137, 139, 255, 0.541); */
 }
