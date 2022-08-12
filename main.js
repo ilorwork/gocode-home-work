@@ -1,4 +1,8 @@
-const tabs = { todoTab: "todoTab", doneTab: "doneTab" };
+// const tabs = { todoTab: "todoTab", doneTab: "doneTab" };
+const tabs = {
+  todoTab: { name: "todoTab", isActive: "true" },
+  doneTab: { name: "doneTab", isActive: "false" },
+};
 
 const addTodoInput = document.querySelector(".todo-input");
 const pageListElement = document.querySelector(".page-list");
@@ -50,7 +54,7 @@ todoListBtn.addEventListener("click", () => {
 });
 
 const reRenderToDoList = (todoList) => {
-  activateTab(tabs.todoTab);
+  activateTab(tabs.todoTab.name);
 
   pageListElement.innerHTML = "";
 
@@ -95,7 +99,7 @@ doneListBtn.addEventListener("click", () => {
 });
 
 const reRenderDoneList = (doneList) => {
-  activateTab(tabs.doneTab);
+  activateTab(tabs.doneTab.name);
 
   pageListElement.innerHTML = "";
 
@@ -172,14 +176,11 @@ const addItemUnDoneListener = (element, itemId) => {
 
 const switchColorBtn = document.querySelector(".switch-color-btn");
 let isLightMode = true;
-// let todoListBtnBoxShadow = "";
 
 switchColorBtn.addEventListener("click", () => {
   if (!isLightMode) {
-    // todoListBtnBoxShadow = "rgb(110 228 61 / 84%) 0px 21px 20px";
-    // todoListBtn.style.boxShadow = "rgb(110 228 61 / 84%) 0px 21px 20px";
-    document.body.style.backgroundImage =
-      "url('./assets/top-view-list-written-black-notebook-black-table-free-space (3).jpg')";
+    // document.body.style.backgroundImage =
+    //   "url('./assets/top-view-list-written-black-notebook-black-table-free-space (3).jpg')";
     document.body.style.backgroundColor = "initial";
     pageListElement.style.backgroundColor = "white";
     pageListElement.style.color = "initial";
@@ -188,10 +189,8 @@ switchColorBtn.addEventListener("click", () => {
     addTodoInput.style.color = "initial";
     isLightMode = !isLightMode;
   } else {
-    // todoListBtnBoxShadow = "rgb(0 125 0 / 88%) 0px 18px 6px";
-    // todoListBtn.style.boxShadow = "rgb(0 125 0 / 88%) 0px 18px 6px";
-    document.body.style.backgroundImage =
-      "url('./assets/wepik-photo-mode-202279-340401111.png')";
+    // document.body.style.backgroundImage =
+    //   "url('./assets/wepik-photo-mode-202279-340401111.png')";
     document.body.style.backgroundColor = "black";
     pageListElement.style.backgroundColor = "#262424";
     pageListElement.style.color = "rgb(219 216 216)";
@@ -203,25 +202,31 @@ switchColorBtn.addEventListener("click", () => {
 });
 
 const activateTab = (tabName) => {
-  if (tabName.match(tabs.todoTab)) {
-    // todoListBtn.style.backgroundColor = "";
-    // doneListBtn.style.backgroundColor = "initial";
-    // todoListBtn.style.boxShadow = todoListBtnBoxShadow;
+  if (tabName.match(tabs.todoTab.name)) {
+    tabs.todoTab.isActive = true;
     todoListBtn.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
     doneListBtn.style.boxShadow = "none";
     pageListElement.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
-  } else if (tabName.match(tabs.doneTab)) {
-    // todoListBtn.style.backgroundColor = "";
-    // doneListBtn.style.backgroundColor = "initial";
-
-
-    
+  } else if (tabName.match(tabs.doneTab.name)) {
+    tabs.todoTab.isActive = false;
     document.scrollingElement.style.webkitScrollbarThumb = "blue";
-
-
-
     todoListBtn.style.boxShadow = "none";
     doneListBtn.style.boxShadow = "rgb(70 56 254 / 86%) 0px 5px 15px";
     pageListElement.style.boxShadow = "rgb(4 8 255) 0px 5px 15px";
   }
 };
+
+const removeAllBtn = document.querySelector(".clear-all-btn");
+
+removeAllBtn.addEventListener("click", () => {
+  const isUserSure = confirm("Are you sure you want to clear this list?");
+  if (!isUserSure) return;
+
+  if (tabs.todoTab.isActive) {
+    todoArr = [];
+    reRenderToDoList(todoArr);
+  } else if (tabs.doneTab.isActive) {
+    doneListArr = [];
+    reRenderDoneList(doneListArr);
+  }
+});
