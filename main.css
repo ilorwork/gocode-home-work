@@ -79,7 +79,6 @@ header > input:focus {
 
 .todo-list-btn {
   background-color: rgb(51, 181, 51);
-  /* box-shadow: rgb(110 228 61 / 84%) 0px 21px 20px; */
   box-shadow: rgb(71 192 0) 0px 5px 15px;
 }
 

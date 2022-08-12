@@ -1,11 +1,18 @@
-// const tabs = { todoTab: "todoTab", doneTab: "doneTab" };
 const tabs = {
   todoTab: { name: "todoTab", isActive: "true" },
   doneTab: { name: "doneTab", isActive: "false" },
 };
 
+let todoArr = [];
+let doneListArr = [];
+
 const addTodoInput = document.querySelector(".todo-input");
 const pageListElement = document.querySelector(".page-list");
+const todoListBtn = document.querySelector(".todo-list-btn");
+const doneListBtn = document.querySelector(".done-list-btn");
+const removeAllBtn = document.querySelector(".clear-all-btn");
+const switchColorBtn = document.querySelector(".switch-color-btn");
+let isLightMode = true;
 
 const addTodoBtn = document.createElement("button");
 addTodoBtn.className = "add-todo-item-btn";
@@ -38,17 +45,11 @@ addTodoBtn.addEventListener("click", () => {
   reRenderToDoList(todoArr);
 
   addTodoInput.value = "";
-  // TODO: from unknown reason somtimes this line causes "Uncaught TypeError: Cannot read properties of null (reading 'removeChild')" exeption.
-  // possible workaround - using contitional access. Edit - doesnt helping!!
-  // Seemed to happened when pressing the Enter and another key at the same time.
-  //if (document.querySelector(".add-todo-item-btn")) return;
 
+  // TODO: when pressing Enter and another key at the same time this line causes "Uncaught TypeError: Cannot read properties of null (reading 'removeChild')" exeption.
   addTodoBtn.parentElement.removeChild(addTodoBtn);
 });
 
-let todoArr = [];
-
-const todoListBtn = document.querySelector(".todo-list-btn");
 todoListBtn.addEventListener("click", () => {
   reRenderToDoList(todoArr);
 });
@@ -91,9 +92,6 @@ const renderTodoItem = (todoItem) => {
   addRemoveItemListener(itemRemoveBtn, todoItem.id);
 };
 
-let doneListArr = [];
-
-const doneListBtn = document.querySelector(".done-list-btn");
 doneListBtn.addEventListener("click", () => {
   reRenderDoneList(doneListArr);
 });
@@ -174,9 +172,6 @@ const addItemUnDoneListener = (element, itemId) => {
   });
 };
 
-const switchColorBtn = document.querySelector(".switch-color-btn");
-let isLightMode = true;
-
 switchColorBtn.addEventListener("click", () => {
   if (!isLightMode) {
     // document.body.style.backgroundImage =
@@ -215,8 +210,6 @@ const activateTab = (tabName) => {
     pageListElement.style.boxShadow = "rgb(4 8 255) 0px 5px 15px";
   }
 };
-
-const removeAllBtn = document.querySelector(".clear-all-btn");
 
 removeAllBtn.addEventListener("click", () => {
   const isUserSure = confirm("Are you sure you want to clear this list?");
