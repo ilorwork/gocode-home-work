@@ -208,8 +208,3 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(146, 141, 141);
 }
-
-embed {
-  width: 1rem;
-  height: 1rem;
-}

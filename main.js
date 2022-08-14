@@ -81,8 +81,7 @@ const renderTodoItem = (todoItem) => {
 
   const itemRemoveBtn = document.createElement("button");
   itemRemoveBtn.className = "item-remove-btn";
-  itemRemoveBtn.innerHTML =
-    "<embed src='https://www.svgrepo.com/show/66604/trash.svg' />";
+  itemRemoveBtn.innerText = "remove";
 
   const itemDoneBtn = document.createElement("button");
   itemDoneBtn.className = "item-done-btn";
