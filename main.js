@@ -13,17 +13,15 @@ function detectCollision(objects, point) {
   //   )
   //     return object;
   // }
-  let matchObj = [];
-  objects.forEach(({ x, y, width, height }) => {
+  return objects.find(({ x, y, width, height }) => {
     if (
       point.x >= x &&
       point.x <= x + width &&
       point.y >= y &&
       point.y <= y + height
     )
-      matchObj = { x, y, width, height };
+      return { x, y, width, height };
   });
-  return matchObj;
 }
 
 const myObjects = [
