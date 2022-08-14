@@ -48,6 +48,7 @@ header > input:focus {
 }
 
 .add-todo-item-btn {
+  display: none;
   flex: 1;
   background-color: rgb(108, 108, 255);
   border-radius: 9px;

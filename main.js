@@ -17,6 +17,7 @@ let isLightMode = true;
 const addTodoBtn = document.createElement("button");
 addTodoBtn.className = "add-todo-item-btn";
 addTodoBtn.innerText = "add";
+addTodoInput.parentElement.appendChild(addTodoBtn);
 
 addTodoInput.addEventListener("keyup", (e) => {
   if (e.code === "Enter" || e.code === "NumpadEnter") {
@@ -27,12 +28,12 @@ addTodoInput.addEventListener("keyup", (e) => {
   }
 
   if (addTodoInput.value) {
-    addTodoInput.parentElement.appendChild(addTodoBtn);
+    addTodoBtn.style.display = "block";
   } else if (
     !addTodoInput.value &&
     document.querySelector(".add-todo-item-btn")
   ) {
-    addTodoInput.parentElement.removeChild(addTodoBtn);
+    addTodoBtn.style.display = "none";
   }
 });
 
@@ -46,8 +47,7 @@ addTodoBtn.addEventListener("click", () => {
 
   addTodoInput.value = "";
 
-  // TODO: when pressing Enter and another key at the same time this line causes "Uncaught TypeError: Cannot read properties of null (reading 'removeChild')" exeption.
-  addTodoBtn.parentElement.removeChild(addTodoBtn);
+  addTodoBtn.style.display = "none";
 });
 
 todoListBtn.addEventListener("click", () => {
@@ -66,7 +66,9 @@ const reRenderToDoList = (todoList) => {
   todoList.forEach((item) => {
     renderTodoItem(item);
   });
-  document.querySelector(".todo-item").scrollIntoView({ block: "center" });
+
+  const firstItem = document.querySelector(".todo-item");
+  firstItem?.scrollIntoView({ block: "center" });
 };
 
 const renderTodoItem = (todoItem) => {
@@ -109,7 +111,9 @@ const reRenderDoneList = (doneList) => {
   doneList.forEach((item) => {
     renderDoneItem(item);
   });
-  document.querySelector(".todo-item").scrollIntoView({ block: "center" });
+
+  const firstItem = document.querySelector(".todo-item");
+  firstItem?.scrollIntoView({ block: "center" });
 };
 
 const renderDoneItem = (doneitem) => {
