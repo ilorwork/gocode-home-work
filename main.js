@@ -66,6 +66,7 @@ const reRenderToDoList = (todoList) => {
   todoList.forEach((item) => {
     renderTodoItem(item);
   });
+  document.querySelector(".todo-item").scrollIntoView({ block: "center" });
 };
 
 const renderTodoItem = (todoItem) => {
@@ -108,6 +109,7 @@ const reRenderDoneList = (doneList) => {
   doneList.forEach((item) => {
     renderDoneItem(item);
   });
+  document.querySelector(".todo-item").scrollIntoView({ block: "center" });
 };
 
 const renderDoneItem = (doneitem) => {
