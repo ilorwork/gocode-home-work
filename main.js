@@ -37,7 +37,7 @@ addTodoInput.addEventListener("keyup", (e) => {
 });
 
 addTodoBtn.addEventListener("click", () => {
-  if (!addTodoInput.value) return;
+  if (!addTodoInput.value || !addTodoInput.value.trim().length) return;
 
   const todoItem = { value: addTodoInput.value, id: Date.now() };
   todoArr.unshift(todoItem);
