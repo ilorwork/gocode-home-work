@@ -205,15 +205,20 @@ switchColorBtn.addEventListener("click", () => {
 const activateTab = (tabName) => {
   if (tabName.match(tabs.todoTab.name)) {
     tabs.todoTab.isActive = true;
+
     todoListBtn.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
     doneListBtn.style.boxShadow = "none";
     pageListElement.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
+
+    pageListElement.classList.remove("done");
   } else if (tabName.match(tabs.doneTab.name)) {
     tabs.todoTab.isActive = false;
-    document.scrollingElement.style.webkitScrollbarThumb = "blue";
+
     todoListBtn.style.boxShadow = "none";
     doneListBtn.style.boxShadow = "rgb(70 56 254 / 86%) 0px 5px 15px";
     pageListElement.style.boxShadow = "rgb(4 8 255) 0px 5px 15px";
+
+    pageListElement.classList.add("done");
   }
 };
 

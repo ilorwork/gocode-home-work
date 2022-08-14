@@ -151,9 +151,7 @@ header > input:focus {
 
 footer {
   display: flex;
-
   margin-top: 0.5rem;
-
 }
 
 .switch-color-btn {
@@ -198,11 +196,12 @@ footer {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(78, 81, 240, 0.541);
   background: rgba(70, 192, 0, 0.6);
-  /* for dark */
-  /* background: rgba(137, 139, 255, 0.541); */
   border-radius: 14px;
+}
+
+.done::-webkit-scrollbar-thumb {
+  background: rgba(78, 81, 240, 0.541);
 }
 
 /* Handle on hover */
