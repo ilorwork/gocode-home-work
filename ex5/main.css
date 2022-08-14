@@ -1,0 +1,14 @@
+body { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    color: rgb(33, 48, 104);
+}
+
+img {
+    width: 15rem;
+    margin-top: 1rem;
+}
