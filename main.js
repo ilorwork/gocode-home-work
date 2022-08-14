@@ -13,7 +13,7 @@ function detectCollision(objects, point) {
   //   )
   //     return object;
   // }
-
+  let matchObj = [];
   objects.forEach(({ x, y, width, height }) => {
     if (
       point.x >= x &&
@@ -21,9 +21,9 @@ function detectCollision(objects, point) {
       point.y >= y &&
       point.y <= y + height
     )
-      return { x, y, width, height };
+      matchObj = { x, y, width, height };
   });
-  return "none";
+  return matchObj;
 }
 
 const myObjects = [
