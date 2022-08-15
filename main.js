@@ -3,6 +3,8 @@ const tabs = {
   doneTab: { name: "doneTab", isActive: "false" },
 };
 
+let isLightMode = true;
+
 let todoArr = [];
 let doneListArr = [];
 
@@ -12,7 +14,6 @@ const todoListBtn = document.querySelector(".todo-list-btn");
 const doneListBtn = document.querySelector(".done-list-btn");
 const removeAllBtn = document.querySelector(".clear-all-btn");
 const switchColorBtn = document.querySelector(".switch-color-btn");
-let isLightMode = true;
 
 const addTodoBtn = document.createElement("button");
 addTodoBtn.className = "add-todo-item-btn";
@@ -71,30 +72,6 @@ const reRenderToDoList = (todoList) => {
   firstItem?.scrollIntoView({ block: "center" });
 };
 
-const renderTodoItem = (todoItem) => {
-  const todoItemElement = document.createElement("div");
-  todoItemElement.className = "todo-item";
-  todoItemElement.innerText = todoItem.value;
-
-  const itemBtnsContainer = document.createElement("div");
-  itemBtnsContainer.className = "item-btns-container";
-
-  const itemRemoveBtn = document.createElement("button");
-  itemRemoveBtn.className = "item-remove-btn";
-  itemRemoveBtn.innerText = "remove";
-
-  const itemDoneBtn = document.createElement("button");
-  itemDoneBtn.className = "item-done-btn";
-  itemDoneBtn.innerText = "done";
-
-  itemBtnsContainer.append(itemRemoveBtn, itemDoneBtn);
-  todoItemElement.appendChild(itemBtnsContainer);
-  pageListElement.appendChild(todoItemElement);
-
-  addItemIsDoneListener(itemDoneBtn, todoItem.id, todoItemElement);
-  addRemoveItemListener(itemRemoveBtn, todoItem.id);
-};
-
 doneListBtn.addEventListener("click", () => {
   reRenderDoneList(doneListArr);
 });
@@ -116,10 +93,56 @@ const reRenderDoneList = (doneList) => {
   firstItem?.scrollIntoView({ block: "center" });
 };
 
+const activateTab = (tabName) => {
+  if (tabName.match(tabs.todoTab.name)) {
+    tabs.todoTab.isActive = true;
+
+    todoListBtn.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
+    doneListBtn.style.boxShadow = "none";
+    pageListElement.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
+
+    pageListElement.classList.remove("done");
+  } else if (tabName.match(tabs.doneTab.name)) {
+    tabs.todoTab.isActive = false;
+
+    todoListBtn.style.boxShadow = "none";
+    doneListBtn.style.boxShadow = "rgb(70 56 254 / 86%) 0px 5px 15px";
+    pageListElement.style.boxShadow = "rgb(4 8 255) 0px 5px 15px";
+
+    pageListElement.classList.add("done");
+  }
+};
+
+const renderTodoItem = (todoItem) => {
+  renderListItem(
+    todoItem,
+    "item-done-btn",
+    "done",
+    addItemIsDoneListener,
+    addRemoveItemListener
+  );
+};
+
 const renderDoneItem = (doneitem) => {
-  const todoItemElement = document.createElement("div");
-  todoItemElement.className = "todo-item";
-  todoItemElement.innerText = doneitem.value;
+  renderListItem(
+    doneitem,
+    "item-undone-btn",
+    "undone",
+    addItemUnDoneListener,
+    addRemoveDoneItemListener
+  );
+};
+
+const renderListItem = (
+  listItem,
+  changeStatusBtnClass,
+  changeStatusBtnText,
+  changeStatusListener,
+  removeListener
+) => {
+  const listItemElement = document.createElement("div");
+  listItemElement.className = "todo-item";
+  listItemElement.innerText = listItem.value;
 
   const itemBtnsContainer = document.createElement("div");
   itemBtnsContainer.className = "item-btns-container";
@@ -128,16 +151,16 @@ const renderDoneItem = (doneitem) => {
   itemRemoveBtn.className = "item-remove-btn";
   itemRemoveBtn.innerText = "remove";
 
-  const itemUndoneBtn = document.createElement("button");
-  itemUndoneBtn.className = "item-undone-btn";
-  itemUndoneBtn.innerText = "undone";
+  const changeStatusBtn = document.createElement("button");
+  changeStatusBtn.className = changeStatusBtnClass;
+  changeStatusBtn.innerText = changeStatusBtnText;
 
-  itemBtnsContainer.append(itemRemoveBtn, itemUndoneBtn);
-  todoItemElement.appendChild(itemBtnsContainer);
-  pageListElement.appendChild(todoItemElement);
+  itemBtnsContainer.append(itemRemoveBtn, changeStatusBtn);
+  listItemElement.appendChild(itemBtnsContainer);
+  pageListElement.appendChild(listItemElement);
 
-  addItemUnDoneListener(itemUndoneBtn, doneitem.id, todoItemElement);
-  addRemoveDoneItemListener(itemRemoveBtn, doneitem.id);
+  changeStatusListener(changeStatusBtn, listItem.id, listItemElement);
+  removeListener(itemRemoveBtn, listItem.id);
 };
 
 const addRemoveItemListener = (element, itemId) => {
@@ -201,26 +224,6 @@ switchColorBtn.addEventListener("click", () => {
     isLightMode = !isLightMode;
   }
 });
-
-const activateTab = (tabName) => {
-  if (tabName.match(tabs.todoTab.name)) {
-    tabs.todoTab.isActive = true;
-
-    todoListBtn.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
-    doneListBtn.style.boxShadow = "none";
-    pageListElement.style.boxShadow = "rgb(71 192 0) 0px 5px 15px";
-
-    pageListElement.classList.remove("done");
-  } else if (tabName.match(tabs.doneTab.name)) {
-    tabs.todoTab.isActive = false;
-
-    todoListBtn.style.boxShadow = "none";
-    doneListBtn.style.boxShadow = "rgb(70 56 254 / 86%) 0px 5px 15px";
-    pageListElement.style.boxShadow = "rgb(4 8 255) 0px 5px 15px";
-
-    pageListElement.classList.add("done");
-  }
-};
 
 removeAllBtn.addEventListener("click", () => {
   const isUserSure = confirm("Are you sure you want to clear this list?");
