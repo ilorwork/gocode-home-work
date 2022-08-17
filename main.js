@@ -271,11 +271,11 @@ const Product = ({
   rating,
 }) => {
   return (
-    <div class="product-card">
-      <div class="product-image">
+    <div className="product-card">
+      <div className="product-image">
         <img src={image} />
       </div>
-      <div class="product-info">
+      <div className="product-info">
         <h5>{title}</h5>
         <h6>{price}</h6>
       </div>
