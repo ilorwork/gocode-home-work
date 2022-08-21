@@ -20,13 +20,18 @@
     text-align: center;
 }
 
-.add-to-cart-btn {
+.cart-btns-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cart-btns-container > button {
     background-color: rgb(228, 195, 78);
     margin-top: 15px;
     height: 35px;
 }
 
-.add-to-cart-btn:hover {
+.cart-btns-container > button:hover {
     background-color: rgb(212, 175, 42);
 }
 

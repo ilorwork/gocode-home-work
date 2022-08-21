@@ -12,6 +12,7 @@ const Product = ({
   rating,
 }) => {
   const { addToCart } = useContext(ShopContext);
+  const { removeFromCart } = useContext(ShopContext);
 
   return (
     <div className="product-card">
@@ -22,9 +23,17 @@ const Product = ({
         <h5>{title}</h5>
         <h6>{price}</h6>
       </div>
-      <button onClick={() => addToCart(id)} className="add-to-cart-btn">
-        Add to cart
-      </button>
+      <div className="cart-btns-container">
+        <button onClick={() => addToCart(id)} className="add-to-cart-btn">
+          Add to cart
+        </button>
+        <button
+          onClick={() => removeFromCart(id)}
+          className="remove-from-cart-btn"
+        >
+          Remove from cart
+        </button>
+      </div>
     </div>
   );
 };
