@@ -166,6 +166,15 @@ h6 {
     font-size: 14px;
 }
 
+button {
+   border: none;
+   border-radius: 8px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 
 @media (max-width: 480px) {
     h1 {

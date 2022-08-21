@@ -19,6 +19,9 @@ const Product = ({
         <h5>{title}</h5>
         <h6>{price}</h6>
       </div>
+      <button onClick={() => {}} className="add-to-cart-btn">
+        Add to cart
+      </button>
     </div>
   );
 };

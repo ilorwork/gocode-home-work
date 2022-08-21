@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Cart from "./components/Cart";
 import Nav from "./components/Nav";
 import Products from "./components/Products";
 
@@ -40,6 +41,7 @@ function App() {
       <Nav products={productsArr} filterByCat={filterByCat} />
 
       <Products products={productsToRender} />
+      <Cart />
     </div>
   );
 }
