@@ -4,7 +4,7 @@ import "./Cart.css";
 const Cart = ({ productsInCart }) => {
   return (
     <button onClick={() => console.log(productsInCart)} className="cart-btn">
-      Cart
+      Cart - {productsInCart.length} items
     </button>
   );
 };
