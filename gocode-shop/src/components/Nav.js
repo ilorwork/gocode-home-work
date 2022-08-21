@@ -1,7 +1,13 @@
 import React from "react";
 import "./Nav.css";
 
-const Nav = () => {
+const Nav = ({ products, filterByCat }) => {
+  const categories = products
+    .map((p) => p.category)
+    .filter((value, index, array) => array.indexOf(value) === index);
+
+  const options = categories.map((cat) => <option value={cat}>{cat}</option>);
+
   return (
     <nav className="product-filter">
       <h1>Jackets</h1>
@@ -9,15 +15,13 @@ const Nav = () => {
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select>
-            <option value="/">All Jackets</option>
-            <option value="/">2016</option>
-            <option value="/">jacket</option>
-            <option value="/">Jackets</option>
-            <option value="/">layers</option>
-            <option value="/">Obermeyer</option>
-            <option value="/">Roxy</option>
-            <option value="/">womens</option>
+          <select
+            onChange={(e) => {
+              // console.log(e.target.value);
+              filterByCat(e.target.value);
+            }}
+          >
+            {options}
           </select>
         </div>
 

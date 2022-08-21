@@ -3,20 +3,8 @@ import Product from "./Product";
 import Loader from "./Loader";
 import "./Products.css";
 
-const Products = () => {
-  const [productsArr, setProductsArr] = useState([]);
-
-  const fetchProducts = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setProductsArr(data));
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const productComponnents = productsArr.map((item) => (
+const Products = ({ products }) => {
+  const productComponnents = products.map((item) => (
     <Product
       id={item.id}
       key={item.id}
@@ -29,7 +17,7 @@ const Products = () => {
     />
   ));
 
-  console.log(productsArr);
+  // console.log(productsArr);
 
   return (
     <>
