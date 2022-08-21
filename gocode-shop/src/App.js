@@ -3,9 +3,11 @@ import "./App.css";
 import Cart from "./components/Cart";
 import Nav from "./components/Nav";
 import Products from "./components/Products";
+import ShopContext from "./ShopContext";
 
 function App() {
   const [productsArr, setProductsArr] = useState([]);
+  const [productsInCart, setProductsInCart] = useState([]);
   const [filteredProductsByCategory, setFilteredProductsByCategory] = useState(
     []
   );
@@ -27,6 +29,16 @@ function App() {
       .then((data) => setProductsArr(data));
   };
 
+  const addToCart = (id) => {
+    const productsToAdd = productsToRender.filter((item) => item.id === id);
+
+    setProductsInCart(productsInCart.concat(productsToAdd));
+  };
+
+  // useEffect(() => {
+  //   console.log(productsInCart);
+  // }, [productsInCart]);
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -37,12 +49,14 @@ function App() {
       : filteredProductsByCategory;
 
   return (
-    <div className="main-container">
-      <Nav products={productsArr} filterByCat={filterByCat} />
+    <ShopContext.Provider value={{ addToCart }}>
+      <div className="main-container">
+        <Nav products={productsArr} filterByCat={filterByCat} />
 
-      <Products products={productsToRender} />
-      <Cart />
-    </div>
+        <Products products={productsToRender} />
+        <Cart productsInCart={productsInCart} />
+      </div>
+    </ShopContext.Provider>
   );
 }
 
