@@ -3,17 +3,12 @@ import Product from "./Product";
 import Loader from "./Loader";
 import "./Products.css";
 
-const Products = ({ products }) => {
-  const productComponnents = products.map((item) => (
+const Products = ({ products, productsInCart }) => {
+  const productComponnents = products.map((product) => (
     <Product
-      id={item.id}
-      key={item.id}
-      title={item.title}
-      price={item.price}
-      description={item.description}
-      category={item.category}
-      image={item.image}
-      rating={item.rating}
+      key={product.id}
+      productInfo={product}
+      productsInCart={productsInCart}
     />
   ));
 

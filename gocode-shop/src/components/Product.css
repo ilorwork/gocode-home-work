@@ -23,16 +23,18 @@
 .cart-btns-container {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .cart-btns-container > button {
-    background-color: rgb(228, 195, 78);
-    margin-top: 15px;
+    background-color: rgb(136, 213, 221);
     height: 35px;
+    width: 30%
 }
 
 .cart-btns-container > button:hover {
-    background-color: rgb(212, 175, 42);
+    background-color: rgb(97, 181, 189);
 }
 
 @media (max-width: 920px) {

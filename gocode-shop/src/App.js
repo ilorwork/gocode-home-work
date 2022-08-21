@@ -73,9 +73,9 @@ function App() {
     <ShopContext.Provider value={{ addToCart, removeFromCart }}>
       <div className="main-container">
         <Nav products={productsArr} filterByCat={filterByCat} />
-
-        <Products products={productsToRender} />
         <Cart productsInCart={productsInCart} />
+
+        <Products products={productsToRender} productsInCart={productsInCart} />
       </div>
     </ShopContext.Provider>
   );
