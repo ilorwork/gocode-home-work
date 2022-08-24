@@ -18,24 +18,29 @@ const Product = ({ productInfo, productsInCart }) => {
       </div>
       <div className="product-info">
         <h5>{productInfo.title}</h5>
-        <h6>{productInfo.price}</h6>
+        <h6>${productInfo.price}</h6>
       </div>
       <div className="cart-btns-container">
         <button
           onClick={() => addToCart(productInfo.id)}
-          className="add-to-cart-btn"
+          className="add-to-cart-btn tooltip"
+          data-tooltip-content="Add To Cart"
         >
           +
         </button>
         <span>{countInCart}</span>
         <button
           onClick={() => removeFromCart(productInfo.id)}
-          className="remove-from-cart-btn"
+          className="remove-from-cart-btn tooltip"
+          data-tooltip-content="Remove From Cart"
         >
           -
         </button>
       </div>
-      <button onClick={() => navigate(`/product/${productInfo.id}`)}>
+      <button
+        className="more-tetails-btn"
+        onClick={() => navigate(`/product/${productInfo.id}`)}
+      >
         More Details
       </button>
     </div>

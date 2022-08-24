@@ -1,7 +1,8 @@
 import React from "react";
+import Cart from "./Cart";
 import "./Nav.css";
 
-const Nav = ({ products, filterByCat }) => {
+const Nav = ({ products, filterByCat, productsInCart }) => {
   const categories = products
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
@@ -13,7 +14,10 @@ const Nav = ({ products, filterByCat }) => {
   ));
 
   return (
-    <nav className="product-filter">
+    <nav className="top-nav-bar">
+      <div className="nav-icons">
+        <Cart productsInCart={productsInCart} />
+      </div>
       <h1>Jackets</h1>
 
       <div className="sort">

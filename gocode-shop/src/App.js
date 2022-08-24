@@ -7,8 +7,12 @@ import Products from "./components/Products";
 function App({ productsArr, filterByCat, productsInCart, productsToRender }) {
   return (
     <div className="main-container">
-      <Nav products={productsArr} filterByCat={filterByCat} />
-      <Cart productsInCart={productsInCart} />
+      <Nav
+        products={productsArr}
+        filterByCat={filterByCat}
+        productsInCart={productsInCart}
+      />
+      {/* <Cart productsInCart={productsInCart} /> */}
 
       <Products products={productsToRender} productsInCart={productsInCart} />
     </div>
