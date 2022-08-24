@@ -6,7 +6,11 @@ const Nav = ({ products, filterByCat }) => {
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
 
-  const options = categories.map((cat) => <option value={cat}>{cat}</option>);
+  const options = categories.map((cat, index) => (
+    <option key={index} value={cat}>
+      {cat}
+    </option>
+  ));
 
   return (
     <nav className="product-filter">
@@ -17,7 +21,6 @@ const Nav = ({ products, filterByCat }) => {
           <label>Filter by:</label>
           <select
             onChange={(e) => {
-              // console.log(e.target.value);
               filterByCat(e.target.value);
             }}
           >

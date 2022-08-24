@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import "./Product.css";
 import ShopContext from "../ShopContext";
+import { useNavigate } from "react-router-dom";
 
 const Product = ({ productInfo, productsInCart }) => {
-  const { addToCart } = useContext(ShopContext);
-  const { removeFromCart } = useContext(ShopContext);
+  const { addToCart, removeFromCart } = useContext(ShopContext);
+  const navigate = useNavigate();
 
   const countInCart = productsInCart.filter(
     (element) => element.id === productInfo.id
@@ -34,6 +35,9 @@ const Product = ({ productInfo, productsInCart }) => {
           -
         </button>
       </div>
+      <button onClick={() => navigate(`/product/${productInfo.id}`)}>
+        More Details
+      </button>
     </div>
   );
 };
