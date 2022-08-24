@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./ProductDetails.css";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
 
-  const fetchProduct = () => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => setProduct(data));
+  const fetchProduct = async () => {
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const data = await response.json();
+    setProduct(data);
   };
 
   useEffect(() => {
     fetchProduct();
   }, []);
 
-  delete product.id;
-  delete product.rating;
+  return (
+    // Ask Almog about the Optional chaining when rendering the rating part
+    <div className="product-card">
+      <img className="product-image" src={product.image} />
 
-  const productDetailsElements = Object.keys(product).map((objKey, index) => {
-    return (
-      <>
-        <div key={index} className={`product-${objKey}`}>
-          {objKey}: {product[objKey]}
-        </div>
-      </>
-    );
-  });
-
-  return <div>{productDetailsElements}</div>;
+      <h5 className="product-title">{product.title}</h5>
+      <h6 className="product-price">${product.price}</h6>
+      <h6 className="product-rating">
+        Rating: {product.rating?.rate} out of 5
+      </h6>
+      <p className="product-description">{product.description}</p>
+      <p className="product-category">Category: {product.category}</p>
+    </div>
+  );
 };
 
 export default ProductDetails;
