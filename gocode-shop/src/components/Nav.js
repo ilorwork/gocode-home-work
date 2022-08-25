@@ -1,6 +1,7 @@
 import React from "react";
 import Cart from "./Cart";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
   const categories = products
@@ -17,8 +18,16 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
     <nav className="top-nav-bar">
       <div className="nav-icons">
         <Cart productsInCart={productsInCart} />
+        <Link to="/">
+          <button>My Shop</button>
+        </Link>
+        <Link to={"/cart"}>Cart</Link>
+        {/* <Link to={"/cart"}><Cart productsInCart={productsInCart} /></Link> */}
+        <Link to={"/newProduct"}>
+          <button>Add New Product</button>
+        </Link>
       </div>
-      <h1>Jackets</h1>
+      <h1 className="home-header">Products</h1>
 
       <div className="sort">
         <div className="collection-sort">

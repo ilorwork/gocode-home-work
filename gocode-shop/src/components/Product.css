@@ -41,13 +41,8 @@
 }
 
 .cart-btns-container > button {
-    background-color: rgb(136, 213, 221);
     height: 35px;
     width: 30%
-}
-
-.cart-btns-container > button:hover {
-    background-color: rgb(97, 181, 189);
 }
 
 .more-tetails-btn {

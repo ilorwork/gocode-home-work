@@ -141,19 +141,19 @@ table {
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
 body {
-    margin: 0 auto;
-    width: 90%;
-    max-width: 1240px;
+    /* margin: 0 auto; */
+    /* width: 90%; */
+    /* max-width: 1240px; */
     font-family: "Roboto", sans-serif;
-    background-color: rgb(136, 213, 221);
+    /* background-color: rgb(136, 213, 221); */
 }
 
 /* Typography */
 
 h1 {
-    font-size: 28px;
-    font-weight: 300;
-    flex: 1;
+    font-size: 30px;
+    /* font-weight: 300; */
+    /* flex: 1; */
 }
 
 h5 {
@@ -169,10 +169,12 @@ h6 {
 button {
    border: none;
    border-radius: 8px;
+   background-color: rgb(136, 213, 221);
 }
 
 button:hover {
     cursor: pointer;
+    background-color: rgb(97, 181, 189);
 }
 
 

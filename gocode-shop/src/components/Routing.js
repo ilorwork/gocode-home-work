@@ -5,6 +5,8 @@ import App from "../App";
 import Cart from "./Cart";
 import ShopContext from "../ShopContext";
 import ProductDetails from "./ProductDetails";
+import NewProduct from "./NewProduct";
+import Nav from "./Nav";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
@@ -30,6 +32,10 @@ const Routing = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    console.log(productsArr);
+  }, [productsArr]);
+
   const addToCart = (id) => {
     const productsToAdd = productsToRender.filter((item) => item.id === id);
 
@@ -54,16 +60,22 @@ const Routing = () => {
     setProductsInCart(result);
   };
 
+  const getCategories = () => {
+    return productsArr
+      .map((p) => p.category)
+      .filter((value, index, array) => array.indexOf(value) === index);
+  };
+
   const productsToRender =
     filteredProductsByCategory.length === 0
       ? productsArr
       : filteredProductsByCategory;
 
   return (
-    <ShopContext.Provider value={{ addToCart, removeFromCart }}>
+    <ShopContext.Provider
+      value={{ addToCart, removeFromCart, getCategories, setProductsArr }}
+    >
       <BrowserRouter>
-        <Link to="/"> home </Link>
-        <Link to={"/cart"}>Cart</Link>
         <Routes>
           <Route
             path="/"
@@ -78,6 +90,9 @@ const Routing = () => {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/newProduct" element={<NewProduct />} />
+          {/* <Route path="/newProduct" element={<><Nav /> <NewProduct /></>} /> */}
+          {/* <Route path="/newProduct" render={<><Nav /> <NewProduct /></>} /> */}
         </Routes>
       </BrowserRouter>
     </ShopContext.Provider>
