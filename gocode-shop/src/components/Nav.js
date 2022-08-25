@@ -1,5 +1,4 @@
 import React from "react";
-import Cart from "./Cart";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 
@@ -17,11 +16,17 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
   return (
     <nav className="top-nav-bar">
       <div className="nav-icons">
-        <Cart productsInCart={productsInCart} />
         <Link to="/">
           <button>My Shop</button>
         </Link>
-        <Link to={"/cart"}>Cart</Link>
+        {/* <Cart productsInCart={productsInCart} /> */}
+        <button
+          onClick={() => console.log(productsInCart)}
+          className="cart-btn"
+        >
+          Cart - {productsInCart.length} items
+        </button>
+        {/* <Link to={"/cart"}>Cart</Link> */}
         {/* <Link to={"/cart"}><Cart productsInCart={productsInCart} /></Link> */}
         <Link to={"/newProduct"}>
           <button>Add New Product</button>

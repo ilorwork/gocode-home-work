@@ -76,6 +76,11 @@ const Routing = () => {
       value={{ addToCart, removeFromCart, getCategories, setProductsArr }}
     >
       <BrowserRouter>
+        <Nav
+          products={productsArr}
+          filterByCat={filterByCat}
+          productsInCart={productsInCart}
+        />
         <Routes>
           <Route
             path="/"
