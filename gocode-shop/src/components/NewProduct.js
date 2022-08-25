@@ -3,25 +3,23 @@ import { useIsFirstRender } from "./custom hooks/useIsFirstRender";
 import "./NewProduct.css";
 import ShopContext from "../ShopContext";
 import Input from "./Input";
-import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
-  const [title, setTitle] = useState(null);
-  const [image, setImage] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [category, setCategory] = useState(null);
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [error, setError] = useState({ errorText: null, rootCause: null });
+  const [submitClear, setSubmitClear] = useState(false);
 
   const isFirstRender = useIsFirstRender();
 
   const { getCategories, setProductsArr } = useContext(ShopContext);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     // console.log(title);
-    if (isFirstRender) return;
+    if (isFirstRender || submitClear) return;
     if (!title) {
       setError({
         errorText: "Title is a mendatory field.",
@@ -40,7 +38,7 @@ const NewProduct = () => {
   }, [title]);
 
   useEffect(() => {
-    if (isFirstRender) return;
+    if (isFirstRender || submitClear) return;
     if (!image) {
       setError({
         errorText: "Image is a mendatory field.",
@@ -54,7 +52,7 @@ const NewProduct = () => {
   }, [image]);
 
   useEffect(() => {
-    if (isFirstRender) return;
+    if (isFirstRender || submitClear) return;
     if (!price) {
       setError({
         errorText: "Price is a mendatory field.",
@@ -85,7 +83,7 @@ const NewProduct = () => {
   }, [price]);
 
   useEffect(() => {
-    if (isFirstRender) return;
+    if (isFirstRender || submitClear) return;
     if (!description) {
       setError({
         errorText: "Description is a mendatory field.",
@@ -104,9 +102,8 @@ const NewProduct = () => {
   }, [description]);
 
   useEffect(() => {
-    if (isFirstRender) return;
-    console.log(category);
-    if (category === "") {
+    if (isFirstRender || submitClear) return;
+    if (!category) {
       setError({
         errorText: "Category is a mendatory field.",
         rootCause: "category",
@@ -144,21 +141,26 @@ const NewProduct = () => {
   const checkForm = () => {
     if (!!error.errorText && error.rootCause !== "submit") {
       return;
-    } else if (!title || !image || !price || !description || category === "") {
+    } else if (!title || !image || !price || !description || !category) {
       setError({
         errorText: "One or more mendatory fields are empty.",
         rootCause: "submit",
       });
     } else {
+      setSubmitClear(true);
       console.log("Great job!");
       addNewProduct();
-      // title
-      // image
-      // price
-      // description
-      // category
-      // error
-      //   window.location.reload();
+
+      setTitle("");
+      setImage("");
+      setPrice("");
+      setDescription("");
+      setCategory("");
+
+      const timer = setTimeout(() => {
+        setError({ errorText: null, rootCause: null });
+        setSubmitClear(false);
+      }, 1000);
     }
   };
 
@@ -178,22 +180,18 @@ const NewProduct = () => {
         count: 0,
       },
     };
-    console.log("fdsafdsafsd");
-    console.log(newProduct);
-    console.log("fdsafdsafdsf");
     setProductsArr((prev) => [newProduct, ...prev]);
-    // productsArr.push(newProduct);
-    // console.log(productsArr[productsArr.length - 1]);
   };
 
   return (
     <div className="page-container">
       <div className="form-container">
-        <h1 className="form-header">New Product</h1>
+        {/* <h1 className="form-header">New Product</h1> */}
         <label className="mendatory">Title</label>
         <input
+          value={title}
           placeholder="Enter product title"
-          onBlur={(e) => {
+          onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
@@ -208,45 +206,41 @@ const NewProduct = () => {
 
         <label className="mendatory">Image</label>
         <input
+          value={image}
           placeholder="Enter product image url"
-          onBlur={(e) => {
+          onChange={(e) => {
             setImage(e.target.value);
           }}
         />
         <label className="mendatory">Price</label>
         <input
-          //   type={"number"}
-          //   min="0"
-          //   max="100000"
+          value={price}
           maxLength={6}
           placeholder="Enter product price"
-          onBlur={(e) => {
+          onChange={(e) => {
             setPrice(e.target.value);
           }}
         />
         <label className="mendatory">Description</label>
         <input
+          value={description}
           placeholder="Enter product description"
-          onBlur={(e) => {
+          onChange={(e) => {
             setDescription(e.target.value);
           }}
         />
 
         <label htmlFor="category-select">Choose Category:</label>
-        <select
-          name="category"
-          id="category-select"
-          onChange={(e) => setCategory(e.target.value)}
-        >
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">--Please choose category--</option>
           {options}
         </select>
+
         <button className="submit-form" type="submit" onClick={checkForm}>
           Create
         </button>
         <p style={{ color: "red" }}>{error.errorText}</p>
       </div>
-      <button onClick={() => navigate("/")}>Home</button>
     </div>
   );
 };
