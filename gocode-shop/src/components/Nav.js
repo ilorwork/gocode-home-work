@@ -1,6 +1,7 @@
 import React from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
+import Cart from "./Cart";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
   const categories = products
@@ -20,14 +21,21 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           <button>My Shop</button>
         </Link>
         {/* <Cart productsInCart={productsInCart} /> */}
-        <button
-          onClick={() => console.log(productsInCart)}
-          className="cart-btn"
-        >
-          Cart - {productsInCart.length} items
-        </button>
+        <Link to={"/cart"}>
+          <button
+            // onClick={() => {
+            //   // <Cart productsInCart={productsInCart} />;
+            // }}
+            className="cart-btn"
+          >
+            Cart
+          </button>
+          <span className="cart-counter">{productsInCart.length}</span>
+        </Link>
         {/* <Link to={"/cart"}>Cart</Link> */}
-        {/* <Link to={"/cart"}><Cart productsInCart={productsInCart} /></Link> */}
+        {/* <Link to={"/cart"}>
+          <Cart productsInCart={productsInCart} />
+        </Link> */}
         <Link to={"/newProduct"}>
           <button>Add New Product</button>
         </Link>
