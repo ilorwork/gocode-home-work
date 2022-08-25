@@ -3,8 +3,9 @@
 .top-nav-bar {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
-    padding: 30px 0;
+    padding: 15px 0;
     /* background-color: #fff; */
     border-radius: 10px;
     box-shadow: 0 1px 8px rgb(60, 60, 60);
