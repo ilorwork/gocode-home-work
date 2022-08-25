@@ -12,13 +12,14 @@
 }
 
 .nav-icons {
-    flex: 2 10%;
+    flex: 1 20%;
 }
 
 .nav-icons button {
     min-height: 30px;
     box-shadow: 0px 1px 4px #8f8d8d;
     margin: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 .home-header {
@@ -31,7 +32,7 @@
 
 .sort {
     display: flex;
-    flex: 2 10%;
+    flex: 1 20%;
 }
 
 .collection-sort {
