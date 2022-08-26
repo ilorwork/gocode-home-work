@@ -76,13 +76,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -96,25 +96,25 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: ’’;
-    content: none;
+  content: ’’;
+  content: none;
 }
 /* remember to define visible focus styles! 
 :focus{
@@ -123,15 +123,15 @@ q:after {
 
 /* remember to highlight inserts somehow! */
 ins {
-    text-decoration: none;
+  text-decoration: none;
 }
 del {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /*------------------------------------*\
@@ -141,64 +141,63 @@ table {
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
 body {
-    /* margin: 0 auto; */
-    /* width: 90%; */
-    /* max-width: 1240px; */
-    font-family: "Roboto", sans-serif;
-    /* background-color: rgb(136, 213, 221); */
+  /* margin: 0 auto; */
+  /* width: 90%; */
+  /* max-width: 1240px; */
+  font-family: "Roboto", sans-serif;
+  /* background-color: rgb(136, 213, 221); */
 }
 
 /* Typography */
 
 h1 {
-    font-size: 30px;
-    /* font-weight: 300; */
-    /* flex: 1; */
+  font-size: 30px;
+  /* font-weight: 300; */
+  /* flex: 1; */
 }
 
 h5 {
-    font-weight: 500;
-    line-height: 1.7em;
+  font-weight: 500;
+  line-height: 1.7em;
 }
 
 h6 {
-    color: #666;
-    font-size: 14px;
+  color: #666;
+  font-size: 14px;
 }
 
 button {
-   border: none;
-   border-radius: 8px;
-   background-color: rgb(136, 213, 221);
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(136, 213, 221);
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: rgb(97, 181, 189);
+  cursor: pointer;
+  background-color: rgb(97, 181, 189);
 }
 
 label {
-    color: #666;
-    font-weight: 500;
-    line-height: 2em;
-    text-transform: uppercase;
+  color: #666;
+  font-weight: 500;
+  line-height: 2em;
+  text-transform: uppercase;
 }
 
 select {
-    border:none;
-    box-shadow: 0px 1px 3px #8f8d8d;
-    border-radius: 5px;
-    height:25px;
+  border: none;
+  box-shadow: 0px 1px 3px #8f8d8d;
+  border-radius: 5px;
+  height: 25px;
 }
 
 select:hover {
-    cursor:pointer;
-    box-shadow: 0px 1px 4px #434040;
+  cursor: pointer;
+  box-shadow: 0px 1px 4px #434040;
 }
 
-
 @media (max-width: 480px) {
-    h1 {
+  h1 {
     margin-bottom: 20px;
-    }
+  }
 }

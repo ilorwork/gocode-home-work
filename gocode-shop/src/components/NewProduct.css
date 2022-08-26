@@ -1,48 +1,48 @@
 .page-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 30%;
-    height: 600px;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 30%;
+  height: 600px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0 2rem;
 }
 
 .form-header {
-    text-align: center;
+  text-align: center;
 }
 
 .submit-form {
-    align-self: center;
-    width: 7rem;
-    height: 2rem;
-    margin: 1rem;
+  align-self: center;
+  width: 7rem;
+  height: 2rem;
+  margin: 1rem;
 }
 
 .error-text {
-    color: red;
+  color: red;
 }
 
 label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 input {
-    margin-bottom: 2rem;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 5px;
-    height: 1.5rem;
-    border-radius: 6px;
-    padding: 0.5rem;
+  margin-bottom: 2rem;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 5px;
+  height: 1.5rem;
+  border-radius: 6px;
+  padding: 0.5rem;
 }
 
 .mendatory::before {
-    content: "* ";
-    color: red;
+  content: "* ";
+  color: red;
 }
