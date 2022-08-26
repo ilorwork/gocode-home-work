@@ -1,11 +1,14 @@
 import React from "react";
 import "./Cart.css";
+import Products from "./Products";
 
 const Cart = ({ productsInCart }) => {
-  const titles = productsInCart.map((p) => <div>{p.title}</div>);
-  console.log(productsInCart);
-  return <div>{titles}</div>;
-  // return <div>Cart</div>;
+  if (!productsInCart.length) {
+    return <h1>Cart is empty</h1>;
+  }
+
+  const uniq = [...new Set(productsInCart)];
+  return <Products products={uniq} productsInCart={productsInCart} />;
 };
 
 export default Cart;
