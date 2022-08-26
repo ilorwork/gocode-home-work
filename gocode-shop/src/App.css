@@ -177,6 +177,25 @@ button:hover {
     background-color: rgb(97, 181, 189);
 }
 
+label {
+    color: #666;
+    font-weight: 500;
+    line-height: 2em;
+    text-transform: uppercase;
+}
+
+select {
+    border:none;
+    box-shadow: 0px 1px 3px #8f8d8d;
+    border-radius: 5px;
+    height:25px;
+}
+
+select:hover {
+    cursor:pointer;
+    box-shadow: 0px 1px 4px #434040;
+}
+
 
 @media (max-width: 480px) {
     h1 {
