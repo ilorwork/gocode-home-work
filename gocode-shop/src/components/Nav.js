@@ -15,7 +15,6 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
 
   const HeaderView = () => {
     const location = useLocation();
-    console.log(location);
     if (location.pathname === "/") {
       return "Products";
     } else if (location.pathname === "/cart") {
