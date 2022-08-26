@@ -1,6 +1,6 @@
 import React from "react";
 import "./Nav.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
   const categories = products
@@ -12,6 +12,18 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
       {cat}
     </option>
   ));
+
+  const HeaderView = () => {
+    const location = useLocation();
+    console.log(location);
+    if (location.pathname === "/") {
+      return "Products";
+    } else if (location.pathname === "/cart") {
+      return "Cart";
+    } else if (location.pathname === "/newProduct") {
+      return "Create New Product";
+    }
+  };
 
   return (
     <nav className="top-nav-bar">
@@ -27,7 +39,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           <button>Add New Product</button>
         </Link>
       </div>
-      <h1 className="home-header">Products</h1>
+      <h1 className="home-header">{HeaderView()}</h1>
 
       <div className="sort">
         <div className="collection-sort">
