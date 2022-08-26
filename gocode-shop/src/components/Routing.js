@@ -32,9 +32,13 @@ const Routing = () => {
     fetchProducts();
   }, []);
 
+  // useEffect(() => {
+  //   console.log(productsArr);
+  // }, [productsArr]);
+
   useEffect(() => {
-    console.log(productsArr);
-  }, [productsArr]);
+    console.log(productsInCart);
+  }, [productsInCart]);
 
   const addToCart = (id) => {
     const productsToAdd = productsToRender.filter((item) => item.id === id);
@@ -73,7 +77,13 @@ const Routing = () => {
 
   return (
     <ShopContext.Provider
-      value={{ addToCart, removeFromCart, getCategories, setProductsArr }}
+      value={{
+        addToCart,
+        removeFromCart,
+        getCategories,
+        setProductsArr,
+        productsInCart,
+      }}
     >
       <BrowserRouter>
         <Nav

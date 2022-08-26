@@ -1,9 +1,11 @@
 import React from "react";
 import "./Nav.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
+  const navigate = useNavigate();
+
   const categories = products
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
@@ -21,11 +23,11 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           <button>My Shop</button>
         </Link>
         {/* <Cart productsInCart={productsInCart} /> */}
-        <Link to={"/cart"}>
+        <Link to={`/cart`}>
           <button
-            // onClick={() => {
-            //   // <Cart productsInCart={productsInCart} />;
-            // }}
+            onClick={() => {
+              // navigate("/cart");
+            }}
             className="cart-btn"
           >
             Cart
