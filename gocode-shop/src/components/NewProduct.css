@@ -42,6 +42,10 @@ input {
   padding: 0.5rem;
 }
 
+input:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 10px;
+}
+
 .mendatory::before {
   content: "* ";
   color: red;

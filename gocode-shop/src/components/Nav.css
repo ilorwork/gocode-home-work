@@ -78,3 +78,7 @@
 .collection-sort > select {
   background-color: rgb(136, 213, 221);
 }
+
+.collection-sort > select:hover {
+  background-color: rgb(97, 181, 189);
+}

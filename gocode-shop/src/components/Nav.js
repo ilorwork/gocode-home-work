@@ -3,6 +3,8 @@ import "./Nav.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
+  const location = useLocation();
+
   const categories = products
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
@@ -13,12 +15,11 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
     </option>
   ));
 
-  const HeaderView = () => {
-    const location = useLocation();
+  const headerView = () => {
     if (location.pathname === "/") {
       return "Products";
     } else if (location.pathname === "/cart") {
-      return "Cart";
+      return "Your Cart";
     } else if (location.pathname === "/newProduct") {
       return "Create New Product";
     }
@@ -38,7 +39,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           <button>Add New Product</button>
         </Link>
       </div>
-      <h1 className="home-header">{HeaderView()}</h1>
+      <h1 className="home-header">{headerView()}</h1>
 
       <div className="sort">
         <div className="collection-sort">
@@ -47,6 +48,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
             onChange={(e) => {
               filterByCat(e.target.value);
             }}
+            disabled={location.pathname !== "/"}
           >
             <option value={"All"}>All</option>
             {options}
@@ -55,7 +57,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
 
         <div className="collection-sort">
           <label>Sort by:</label>
-          <select>
+          <select disabled={location.pathname !== "/"}>
             <option value="/">Featured</option>
             <option value="/">Best Selling</option>
             <option value="/">Alphabetically, A-Z</option>
