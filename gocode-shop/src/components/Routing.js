@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../App";
 import Cart from "./Cart";
 import ShopContext from "../ShopContext";
@@ -16,6 +16,11 @@ const Routing = () => {
   const [productsInCart, setProductsInCart] = useState([]);
 
   const filterByCat = (category) => {
+    if (category === "All") {
+      setFilteredProductsByCategory(productsArr);
+      return;
+    }
+
     const filteredArr = productsArr.filter(
       (product) => product.category === category
     );
@@ -31,14 +36,6 @@ const Routing = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  // useEffect(() => {
-  //   console.log(productsArr);
-  // }, [productsArr]);
-
-  useEffect(() => {
-    console.log(productsInCart);
-  }, [productsInCart]);
 
   const addToCart = (id) => {
     const productsToAdd = productsToRender.filter((item) => item.id === id);
@@ -82,7 +79,6 @@ const Routing = () => {
         removeFromCart,
         getCategories,
         setProductsArr,
-        productsInCart,
       }}
     >
       <BrowserRouter>
@@ -96,18 +92,17 @@ const Routing = () => {
             path="/"
             element={
               <App
-                productsArr={productsArr}
-                filterByCat={filterByCat}
                 productsInCart={productsInCart}
                 productsToRender={productsToRender}
               />
             }
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart productsInCart={productsInCart} />}
+          />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/newProduct" element={<NewProduct />} />
-          {/* <Route path="/newProduct" element={<><Nav /> <NewProduct /></>} /> */}
-          {/* <Route path="/newProduct" render={<><Nav /> <NewProduct /></>} /> */}
         </Routes>
       </BrowserRouter>
     </ShopContext.Provider>

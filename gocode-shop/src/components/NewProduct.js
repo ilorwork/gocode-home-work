@@ -18,7 +18,6 @@ const NewProduct = () => {
   const { getCategories, setProductsArr } = useContext(ShopContext);
 
   useEffect(() => {
-    // console.log(title);
     if (isFirstRender || submitClear) return;
     if (!title) {
       setError({
@@ -115,10 +114,6 @@ const NewProduct = () => {
     }
   }, [category]);
 
-  //   useEffect(() => {
-  //     console.log(error);
-  //   }, [error]);
-
   const isNumber = (val) => {
     return /^\d+$/.test(val);
   };
@@ -128,15 +123,6 @@ const NewProduct = () => {
       {cat}
     </option>
   ));
-
-  //   const checkTitle = (title) => {
-  //     if (isFirstRender) return;
-  //     if (!description) {
-  //       return "description is a mendatory field";
-  //     } else if (title.length > 100) {
-  //       return "description is too long";
-  //     }
-  //   };
 
   const checkForm = () => {
     if (!!error.errorText && error.rootCause !== "submit") {
@@ -148,7 +134,6 @@ const NewProduct = () => {
       });
     } else {
       setSubmitClear(true);
-      console.log("Great job!");
       addNewProduct();
 
       setTitle("");
@@ -165,10 +150,7 @@ const NewProduct = () => {
   };
 
   const addNewProduct = () => {
-    // const ids = productsArr.map((p) => p.id);
-    // const lastId = Math.max(...ids);
     const newProduct = {
-      //   id: lastId + 1,
       id: Date.now(),
       title: title,
       price: price,
@@ -239,7 +221,7 @@ const NewProduct = () => {
         <button className="submit-form" type="submit" onClick={checkForm}>
           Create
         </button>
-        <p style={{ color: "red" }}>{error.errorText}</p>
+        <p className="error-text">{error.errorText}</p>
       </div>
     </div>
   );

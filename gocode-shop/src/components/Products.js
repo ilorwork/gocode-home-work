@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Product from "./Product";
 import Loader from "./Loader";
 import "./Products.css";
@@ -11,8 +11,6 @@ const Products = ({ products, productsInCart }) => {
       productsInCart={productsInCart}
     />
   ));
-
-  // console.log(productsArr);
 
   return (
     <>

@@ -25,6 +25,10 @@
     margin: 1rem;
 }
 
+.error-text {
+    color: red;
+}
+
 label {
 font-size: small;
 }
