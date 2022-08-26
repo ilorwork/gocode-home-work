@@ -4,7 +4,11 @@ import Products from "./Products";
 
 const Cart = ({ productsInCart }) => {
   if (!productsInCart.length) {
-    return <h1>Cart is empty</h1>;
+    return (
+      <div className="empty-cart-header-container">
+        <h1>Cart is empty</h1>
+      </div>
+    );
   }
 
   const uniq = [...new Set(productsInCart)];
