@@ -22,6 +22,8 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
       return "Your Cart";
     } else if (location.pathname === "/newProduct") {
       return "Create New Product";
+    } else if (location.pathname.startsWith("/product/")) {
+      return "Product Details";
     }
   };
 
