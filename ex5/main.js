@@ -20,27 +20,35 @@ const renderSelect = async () => {
     option.id = breed.id;
     breedsSelect.append(option);
 
-    option.addEventListener("touchend", async () => {
-      option.click();
-    });
+    // option.addEventListener("touchend", () => {
+    //   option.click();
+    // });
 
-    option.addEventListener("click", async () => {
-      const response = await fetch(
-        `https://api.thecatapi.com/v1/images/search?breed_ids=${breed.id}`
-      );
-      const data = await response.json();
-      console.log(data);
+    // option.addEventListener("touchstart", () => {
+    //   option.click();
+    // });
 
-      clearOldImgs();
-
-      const dogImg = document.createElement("img");
-      dogImg.src = data[0].url;
-
-      document.body.append(dogImg);
-    });
+    // option.addEventListener("change", () => {
+    //   option.click();
+    // });
   });
   document.body.append(breedsSelect);
 };
+
+breedsSelect.addEventListener("change", async (e) => {
+  const response = await fetch(
+    `https://api.thecatapi.com/v1/images/search?breed_ids=${e.target.id}`
+  );
+  const data = await response.json();
+  console.log(data);
+
+  clearOldImgs();
+
+  const dogImg = document.createElement("img");
+  dogImg.src = data[0].url;
+
+  document.body.append(dogImg);
+});
 
 const clearOldImgs = () => {
   const ImgArr = document.querySelectorAll("img");
