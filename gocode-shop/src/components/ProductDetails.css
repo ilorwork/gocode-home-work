@@ -3,8 +3,20 @@
   justify-content: center;
 }
 
+.product-card {
+  min-width: 25%;
+  height: 100%;
+}
+
+h5,
+h6 {
+  margin: 0.3rem 0;
+  text-align: center;
+}
+
 .product-description {
-  padding: 5px;
+  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   margin: 10px 0;
+  line-height: 120%;
 }
