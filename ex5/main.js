@@ -20,6 +20,10 @@ const renderSelect = async () => {
     option.id = breed.id;
     breedsSelect.append(option);
 
+    option.addEventListener("touchend", async () => {
+      option.click();
+    });
+
     option.addEventListener("click", async () => {
       const response = await fetch(
         `https://api.thecatapi.com/v1/images/search?breed_ids=${breed.id}`
