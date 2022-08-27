@@ -1,10 +1,11 @@
-.product-card-container {
+.product-details-card-container {
   display: flex;
   justify-content: center;
+  /* height: 600px; */
 }
 
-.product-card {
-  min-width: 25%;
+.product-details-card-container > .product-card {
+  min-width: 20%;
   height: 100%;
 }
 

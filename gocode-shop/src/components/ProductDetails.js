@@ -18,7 +18,7 @@ const ProductDetails = () => {
 
   return (
     // Ask Almog about the Optional chaining when rendering the rating part
-    <div className="product-card-container">
+    <div className="product-details-card-container">
       <div className="product-card">
         <img className="product-image" src={product.image} />
 
