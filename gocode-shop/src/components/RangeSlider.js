@@ -9,17 +9,9 @@ function valuetext(value) {
 }
 
 export default function RangeSlider(value, handleChange, maxRangeOnSlider) {
-  //   const [value, setValue] = React.useState([0, 100]);
-
-  //   const handleChange = (event, newValue) => {
-  //     setValue(newValue);
-  //   };
-
   const { sortByPrice } = useContext(ShopContext);
 
   useEffect(() => {
-    // console.log(value);
-    // if (!value) return;
     sortByPrice(value);
   }, [value]);
 
