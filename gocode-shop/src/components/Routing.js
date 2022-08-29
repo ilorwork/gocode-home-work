@@ -14,6 +14,20 @@ const Routing = () => {
     []
   );
   const [productsInCart, setProductsInCart] = useState([]);
+  const [sortedByPrice, setSortedByPrice] = useState([]);
+  const [productsToRender, setProductsToRender] = useState([]);
+
+  useEffect(() => {
+    setProductsToRender(productsArr);
+  }, [productsArr]);
+
+  useEffect(() => {
+    setProductsToRender(filteredProductsByCategory);
+  }, [filteredProductsByCategory]);
+
+  useEffect(() => {
+    setProductsToRender(sortedByPrice);
+  }, [sortedByPrice]);
 
   const filterByCat = (category) => {
     if (category === "All") {
@@ -67,10 +81,17 @@ const Routing = () => {
       .filter((value, index, array) => array.indexOf(value) === index);
   };
 
-  const productsToRender =
-    filteredProductsByCategory.length === 0
-      ? productsArr
-      : filteredProductsByCategory;
+  const sortByPrice = (range) => {
+    const productsToSort =
+      filteredProductsByCategory.length === 0
+        ? productsArr
+        : filteredProductsByCategory;
+
+    const products = productsToSort.filter(
+      (item) => range[0] <= item.price && item.price <= range[1]
+    );
+    setSortedByPrice(products);
+  };
 
   return (
     <ShopContext.Provider
@@ -79,6 +100,7 @@ const Routing = () => {
         removeFromCart,
         getCategories,
         setProductsArr,
+        sortByPrice,
       }}
     >
       <BrowserRouter>

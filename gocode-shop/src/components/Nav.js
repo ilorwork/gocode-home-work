@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import { Link, useLocation } from "react-router-dom";
+import RangeSlider from "./RangeSlider";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
   const location = useLocation();
+
+  const [rangeValue, setRangeValue] = useState([0, 0]);
+  const [maxRangeOnSlider, setMaxRangeOnSlider] = useState("");
+
+  useEffect(() => {
+    if (maxRangeOnSlider !== "" || !products.length) return;
+
+    const prices = products.map((p) => p.price);
+    const maxVal = Math.max(...prices);
+    setRangeValue([0, maxVal]);
+    setMaxRangeOnSlider(maxVal);
+  }, [products]);
+
+  const handleChange = (event, newValue) => {
+    setRangeValue(newValue);
+  };
 
   const categories = products
     .map((p) => p.category)
@@ -43,34 +60,24 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
       </div>
       <h1 className="home-header">{headerView()}</h1>
 
-      <div className="sort">
-        <div className="collection-sort">
-          <label>Filter by:</label>
-          <select
-            onChange={(e) => {
-              filterByCat(e.target.value);
-            }}
-            disabled={location.pathname !== "/"}
-          >
-            <option value={"All"}>All</option>
-            {options}
-          </select>
-        </div>
+      {location.pathname === "/" && (
+        <div className="sort">
+          <div className="collection-sort">
+            <label>Filter by:</label>
+            <select
+              onChange={(e) => {
+                filterByCat(e.target.value);
+              }}
+              // disabled={location.pathname !== "/"}
+            >
+              <option value={"All"}>All</option>
+              {options}
+            </select>
+          </div>
 
-        <div className="collection-sort">
-          <label>Sort by:</label>
-          <select disabled={location.pathname !== "/"}>
-            <option value="/">Featured</option>
-            <option value="/">Best Selling</option>
-            <option value="/">Alphabetically, A-Z</option>
-            <option value="/">Alphabetically, Z-A</option>
-            <option value="/">Price, low to high</option>
-            <option value="/">Price, high to low</option>
-            <option value="/">Date, new to old</option>
-            <option value="/">Date, old to new</option>
-          </select>
+          {products && RangeSlider(rangeValue, handleChange, maxRangeOnSlider)}
         </div>
-      </div>
+      )}
     </nav>
   );
 };

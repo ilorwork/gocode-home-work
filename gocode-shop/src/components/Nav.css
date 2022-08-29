@@ -49,6 +49,7 @@
 .sort {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
 .collection-sort {
