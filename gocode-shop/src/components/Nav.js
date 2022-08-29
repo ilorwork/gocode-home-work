@@ -75,7 +75,13 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
             </select>
           </div>
 
-          {products && RangeSlider(rangeValue, handleChange, maxRangeOnSlider)}
+          {products && (
+            <RangeSlider
+              value={rangeValue}
+              handleChange={handleChange}
+              maxRangeOnSlider={maxRangeOnSlider}
+            />
+          )}
         </div>
       )}
     </nav>

@@ -8,7 +8,7 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function RangeSlider(value, handleChange, maxRangeOnSlider) {
+export default function RangeSlider({ value, handleChange, maxRangeOnSlider }) {
   const { sortByPrice } = useContext(ShopContext);
 
   useEffect(() => {
