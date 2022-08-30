@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import { Link, useLocation } from "react-router-dom";
 import RangeSlider from "./RangeSlider";
+import TempDrawer from "./Material ui/TempDrawer";
 
 const Nav = ({ products, filterByCat, productsInCart }) => {
   const location = useLocation();
@@ -84,6 +85,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           )}
         </div>
       )}
+      <TempDrawer productsInCart={productsInCart} />
     </nav>
   );
 };
