@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import HalfRating from "./HalfRating";
 import "./ProductDetails.css";
 
 const ProductDetails = () => {
@@ -27,6 +28,7 @@ const ProductDetails = () => {
         <h6 className="product-rating">
           Rating: {product.rating?.rate} out of 5
         </h6>
+        <HalfRating value={product.rating?.rate} />
         <p className="product-description">{product.description}</p>
         <p className="product-category">Category: {product.category}</p>
       </div>
