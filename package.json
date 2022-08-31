@@ -1,0 +1,28 @@
+{
+  "name": "gocode-home-work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilorwork/gocode-home-work.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilorwork/gocode-home-work/issues"
+  },
+  "homepage": "https://github.com/ilorwork/gocode-home-work#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.3"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  }
+}
