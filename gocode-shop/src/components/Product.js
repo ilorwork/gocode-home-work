@@ -3,7 +3,11 @@ import "./Product.css";
 import ShopContext from "../ShopContext";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({ productInfo, productsInCart }) => {
+const Product = ({
+  productInfo,
+  productsInCart,
+  containerClass = "product-card",
+}) => {
   const { addToCart, removeFromCart } = useContext(ShopContext);
   const navigate = useNavigate();
 
@@ -12,12 +16,14 @@ const Product = ({ productInfo, productsInCart }) => {
   ).length;
 
   return (
-    <div className="product-card">
+    <div className={containerClass}>
       <div className="product-image">
         <img src={productInfo.image} />
       </div>
       <div className="product-info">
-        <h5>{productInfo.title}</h5>
+        <a onClick={() => navigate(`/product/${productInfo.id}`)}>
+          <h5>{productInfo.title}</h5>
+        </a>
         <h6>${productInfo.price}</h6>
       </div>
       <div className="cart-btns-container">

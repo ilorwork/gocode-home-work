@@ -3,15 +3,10 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-// import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from "@mui/icons-material/Mail";
-import DehazeIcon from "@mui/icons-material/Dehaze";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cart from "../Cart";
+import { Link } from "react-router-dom";
+import "./TempDrawer.css";
 
 const TempDrawer = ({ productsInCart }) => {
   const [open, setOpen] = useState(false);
@@ -27,41 +22,29 @@ const TempDrawer = ({ productsInCart }) => {
     setOpen(isOpen);
   };
 
-  const uniq = [...new Set(productsInCart)];
-
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 350 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
+      // onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <Cart productsInCart={productsInCart} />
-
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <div className="go-to-cart-container">
+          <Link to={`/cart`}>
+            <Button
+              variant="contained"
+              className="go-to-cart-btn"
+              onClick={toggleDrawer(false)}
+            >
+              Go To Cart
+            </Button>
+          </Link>
+        </div>
+        <Cart
+          productsInCart={productsInCart}
+          containerClass="product-card-row"
+        />
       </List>
     </Box>
   );
@@ -70,8 +53,8 @@ const TempDrawer = ({ productsInCart }) => {
     <div>
       {
         <React.Fragment>
-          <Button onClick={toggleDrawer(true)}>
-            <DehazeIcon />
+          <Button variant="contained" onClick={toggleDrawer(true)}>
+            <ShoppingCartIcon />
           </Button>
           <Drawer anchor={"right"} open={open} onClose={toggleDrawer(false)}>
             {list()}

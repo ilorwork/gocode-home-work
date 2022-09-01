@@ -16,11 +16,37 @@
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
+.product-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 4%;
+  /* flex: 1 16%; */
+  /* width: 248px; */
+  margin: 0.35rem;
+  height: 7rem;
+  border-radius: 8px;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(50, 50, 93, 0.25) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 .product-image {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20rem;
+}
+
+.product-card-row > .product-image {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 5rem;
+  height: 7rem;
 }
 
 .product-image img {
@@ -29,14 +55,63 @@
   max-height: 20rem;
 }
 
+.product-card-row > .product-image img {
+  /* max-width: 10rem; */
+
+  /* May redundent */
+  max-width: 5rem;
+  /* height: 4rem; */
+  /* width: 100%; */
+  /* max-width: 10rem; */
+  max-height: 5rem;
+}
+
 .product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
   margin-top: auto;
   padding-top: 20px;
   text-align: center;
+  text-overflow: ellipsis;
+}
+
+.product-card-row > .product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+}
+
+.product-card-row > .product-info h5 {
+  /* height: 10px; */
+  padding: 0 3%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.product-info > a:hover {
+  cursor: pointer;
 }
 
 .cart-btns-container {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.product-card-row > .cart-btns-container {
+  display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 15px;
@@ -47,9 +122,18 @@
   width: 30%;
 }
 
+.product-card-row > .cart-btns-container > button {
+  height: 20px;
+  width: 2rem;
+}
+
 .more-tetails-btn {
   margin-top: 5%;
   height: 25px;
+}
+
+.product-card-row > .more-tetails-btn {
+  display: none;
 }
 
 .tooltip {

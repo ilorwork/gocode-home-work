@@ -2,7 +2,7 @@ import React from "react";
 import "./Cart.css";
 import Products from "./Products";
 
-const Cart = ({ productsInCart }) => {
+const Cart = ({ productsInCart, containerClass }) => {
   if (!productsInCart.length) {
     return (
       <div className="empty-cart-header-container">
@@ -12,7 +12,13 @@ const Cart = ({ productsInCart }) => {
   }
 
   const uniq = [...new Set(productsInCart)];
-  return <Products products={uniq} productsInCart={productsInCart} />;
+  return (
+    <Products
+      products={uniq}
+      productsInCart={productsInCart}
+      containerClass={containerClass}
+    />
+  );
 };
 
 export default Cart;

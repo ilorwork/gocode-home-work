@@ -9,8 +9,8 @@
   height: 100%;
 }
 
-h5,
-h6 {
+.product-details-card-container h5,
+.product-details-card-container h6 {
   margin: 0.3rem 0;
   text-align: center;
 }
