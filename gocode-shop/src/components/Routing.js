@@ -7,6 +7,7 @@ import ShopContext from "../ShopContext";
 import ProductDetails from "./ProductDetails";
 import NewProduct from "./NewProduct";
 import Nav from "./Nav";
+import AdminPanel from "./AdminPanel";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
@@ -18,6 +19,7 @@ const Routing = () => {
   const [productsToRender, setProductsToRender] = useState([]);
 
   useEffect(() => {
+    console.log(productsArr.length);
     setProductsToRender(productsArr);
   }, [productsArr]);
 
@@ -125,6 +127,14 @@ const Routing = () => {
           />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/newProduct" element={<NewProduct />} />
+          <Route
+            path="/editProduct/:id"
+            element={<NewProduct products={productsArr} />}
+          />
+          <Route
+            path="/adminPanel"
+            element={<AdminPanel products={productsArr} />}
+          />
         </Routes>
       </BrowserRouter>
     </ShopContext.Provider>

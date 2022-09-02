@@ -3,8 +3,9 @@ import { useIsFirstRender } from "./custom hooks/useIsFirstRender";
 import "./NewProduct.css";
 import ShopContext from "../ShopContext";
 import Input from "./Input";
+import { useParams } from "react-router-dom";
 
-const NewProduct = () => {
+const NewProduct = ({ products }) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState("");
@@ -12,10 +13,28 @@ const NewProduct = () => {
   const [category, setCategory] = useState("");
   const [error, setError] = useState({ errorText: null, rootCause: null });
   const [submitClear, setSubmitClear] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const { id } = useParams();
 
   const isFirstRender = useIsFirstRender();
 
   const { getCategories, setProductsArr } = useContext(ShopContext);
+  let productToEdit;
+  useEffect(() => {
+    if (!products) return;
+
+    productToEdit = products.filter((p) => p.id === Number(id));
+    if (productToEdit.length) {
+      setTitle(productToEdit[0].title);
+      setImage(productToEdit[0].image);
+      setPrice(productToEdit[0].price);
+      setDescription(productToEdit[0].description);
+      setCategory(productToEdit[0].category);
+
+      setIsEdit(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (isFirstRender || submitClear) return;
@@ -24,7 +43,7 @@ const NewProduct = () => {
         errorText: "Title is a mendatory field.",
         rootCause: "title",
       });
-    } else if (title.length > 40) {
+    } else if (title.length > 80) {
       setError({
         errorText: "Title is too long.",
         rootCause: "title",
@@ -83,12 +102,13 @@ const NewProduct = () => {
 
   useEffect(() => {
     if (isFirstRender || submitClear) return;
+
     if (!description) {
       setError({
         errorText: "Description is a mendatory field.",
         rootCause: "description",
       });
-    } else if (description.length > 100) {
+    } else if (description.length > 300) {
       setError({
         errorText: "Description is too long.",
         rootCause: "description",
@@ -115,7 +135,7 @@ const NewProduct = () => {
   }, [category]);
 
   const isNumber = (val) => {
-    return /^\d+$/.test(val);
+    return !isNaN(val);
   };
 
   const options = getCategories().map((cat, index) => (
@@ -134,7 +154,12 @@ const NewProduct = () => {
       });
     } else {
       setSubmitClear(true);
-      addNewProduct();
+
+      if (isEdit) {
+        editProduct();
+      } else {
+        addNewProduct();
+      }
 
       setTitle("");
       setImage("");
@@ -142,6 +167,7 @@ const NewProduct = () => {
       setDescription("");
       setCategory("");
 
+      //TODO: clr this timeout
       const timer = setTimeout(() => {
         setError({ errorText: null, rootCause: null });
         setSubmitClear(false);
@@ -163,6 +189,16 @@ const NewProduct = () => {
       },
     };
     setProductsArr((prev) => [newProduct, ...prev]);
+  };
+
+  const editProduct = () => {
+    const indexOfEdited = products.findIndex((p) => p.id === Number(id));
+
+    products[indexOfEdited].title = title;
+    products[indexOfEdited].image = image;
+    products[indexOfEdited].price = price;
+    products[indexOfEdited].description = description;
+    products[indexOfEdited].category = category;
   };
 
   return (

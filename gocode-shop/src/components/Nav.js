@@ -42,6 +42,10 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
       return "Create New Product";
     } else if (location.pathname.startsWith("/product/")) {
       return "Product Details";
+    } else if (location.pathname === "/adminPanel") {
+      return "Admin Panel";
+    } else if (location.pathname.startsWith("/editProduct/")) {
+      return "Edit Product";
     }
   };
 
@@ -55,8 +59,9 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
           <button className="cart-btn">Cart</button>
           <span className="cart-counter">{productsInCart.length}</span>
         </Link>
-        <Link to={"/newProduct"}>
-          <button>Add New Product</button>
+
+        <Link to={"/adminPanel"}>
+          <button>Admin Panel</button>
         </Link>
       </div>
       <h1 className="home-header">{headerView()}</h1>
