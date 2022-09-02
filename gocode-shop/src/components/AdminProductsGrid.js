@@ -168,7 +168,7 @@ export default function AdminProductsGrid({ products }) {
         rows={productsRows}
         columns={columns}
         pageSize={7}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[7]}
         // checkboxSelection
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
