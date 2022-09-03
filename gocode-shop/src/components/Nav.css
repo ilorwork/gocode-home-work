@@ -22,20 +22,6 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.cart-btn {
-  padding-right: 0.8rem;
-}
-
-.cart-counter {
-  font-size: 12px;
-  background-color: rgb(190, 53, 227);
-  color: white;
-  border-radius: 50%;
-  padding: 0.25rem;
-  margin-left: -17px;
-  position: absolute;
-}
-
 .home-header {
   /* justify-self: center;
     align-self: center; */

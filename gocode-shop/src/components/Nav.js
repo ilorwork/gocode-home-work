@@ -55,11 +55,6 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
         <Link to="/">
           <button>My Shop</button>
         </Link>
-        <Link to={`/cart`}>
-          <button className="cart-btn">Cart</button>
-          <span className="cart-counter">{productsInCart.length}</span>
-        </Link>
-
         <Link to={"/adminPanel"}>
           <button>Admin Panel</button>
         </Link>

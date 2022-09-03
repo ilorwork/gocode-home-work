@@ -7,6 +7,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Cart from "../Cart";
 import { Link } from "react-router-dom";
 import "./TempDrawer.css";
+import { Badge } from "@mui/material";
 
 const TempDrawer = ({ productsInCart }) => {
   const [open, setOpen] = useState(false);
@@ -54,7 +55,13 @@ const TempDrawer = ({ productsInCart }) => {
       {
         <React.Fragment>
           <Button variant="contained" onClick={toggleDrawer(true)}>
-            <ShoppingCartIcon />
+            <Badge
+              color="secondary"
+              badgeContent={productsInCart.length}
+              showZero
+            >
+              <ShoppingCartIcon />
+            </Badge>
           </Button>
           <Drawer anchor={"right"} open={open} onClose={toggleDrawer(false)}>
             {list()}
