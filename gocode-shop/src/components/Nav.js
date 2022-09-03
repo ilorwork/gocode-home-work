@@ -43,7 +43,7 @@ const Nav = ({ products, filterByCat, productsInCart }) => {
     } else if (location.pathname.startsWith("/product/")) {
       return "Product Details";
     } else if (location.pathname === "/adminPanel") {
-      return "Admin Panel";
+      return "Manage Your Products";
     } else if (location.pathname.startsWith("/editProduct/")) {
       return "Edit Product";
     }

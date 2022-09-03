@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRef } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
@@ -50,28 +50,32 @@ export default function AdminProductsGrid({ products }) {
       headerName: "Edit",
       sortable: false,
       renderCell: (params) => (
-        <Button
-          onClick={() => {
-            navigate(`/editProduct/${params.id}`);
-          }}
-        >
-          <EditIcon />
-        </Button>
+        <Tooltip title="Edit" placement="top" arrow>
+          <Button
+            onClick={() => {
+              navigate(`/editProduct/${params.id}`);
+            }}
+          >
+            <EditIcon />
+          </Button>
+        </Tooltip>
       ),
     },
     {
-      field: "",
-      headerName: "",
+      field: "info",
+      headerName: "Info",
       sortable: false,
       renderCell: (params) => (
-        <Button
-          onClick={() => {
-            console.log(params);
-            navigate(`/product/${params.id}`);
-          }}
-        >
-          <InfoIcon />
-        </Button>
+        <Tooltip title="More Details" placement="top" arrow>
+          <Button
+            onClick={() => {
+              console.log(params);
+              navigate(`/product/${params.id}`);
+            }}
+          >
+            <InfoIcon />
+          </Button>
+        </Tooltip>
       ),
     },
   ];
@@ -86,81 +90,6 @@ export default function AdminProductsGrid({ products }) {
       category: p.category,
     };
   });
-
-  const rows = [
-    {
-      id: 1,
-      image: "Snow",
-      title: "Jon",
-      price: 35,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 2,
-      image: "Lannister",
-      title: "Cersei",
-      price: 42,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 3,
-      image: "Lannister",
-      title: "Jaime",
-      price: 45,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 4,
-      image: "Stark",
-      title: "Arya",
-      price: 16,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 5,
-      image: "Targaryen",
-      title: "Daenerys",
-      price: null,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 6,
-      image: "Melisandre",
-      title: null,
-      price: 150,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 7,
-      image: "Clifford",
-      title: "Ferrara",
-      price: 44,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 8,
-      image: "Frances",
-      title: "Rossini",
-      price: 36,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-    {
-      id: 9,
-      image: "Roxie",
-      title: "Harvey",
-      price: 65,
-      description: "fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa",
-      category: "pants",
-    },
-  ];
 
   return (
     <Box sx={{ height: 500, width: "100%" }}>
