@@ -255,7 +255,7 @@ const NewProduct = ({ products }) => {
         </select>
 
         <button className="submit-form" type="submit" onClick={checkForm}>
-          Create
+          {isEdit ? "Update" : "Create"}
         </button>
         <p className="error-text">{error.errorText}</p>
       </div>
