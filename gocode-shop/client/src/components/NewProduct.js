@@ -177,7 +177,6 @@ const NewProduct = ({ products }) => {
 
   const addNewProduct = async () => {
     const newProduct = {
-      // id: Date.now(),
       title: title,
       price: price,
       description: description,
@@ -188,7 +187,6 @@ const NewProduct = ({ products }) => {
         count: 0,
       },
     };
-    // setProductsArr((prev) => [newProduct, ...prev]);
 
     const res = await fetch("http://127.0.0.1:8000/api/products/", {
       method: "POST",
@@ -197,6 +195,9 @@ const NewProduct = ({ products }) => {
       },
       body: JSON.stringify(newProduct),
     });
+    const responsedProduct = await res.json();
+
+    setProductsArr((prev) => [responsedProduct, ...prev]);
   };
 
   const editProduct = async () => {
