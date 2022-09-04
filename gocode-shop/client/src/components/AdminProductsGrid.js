@@ -1,18 +1,30 @@
-import * as React from "react";
-import { useRef } from "react";
+import { useContext } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ShopContext from "../ShopContext";
 
 export default function AdminProductsGrid({ products }) {
   const navigate = useNavigate();
-  const inputElement = useRef();
+  const { setProductsArr } = useContext(ShopContext);
 
-  const focusInput = () => {
-    console.log("fdsafdsa", inputElement.current);
+  const deleteProduct = async (id) => {
+    await fetch(`http://localhost:8000/api/product/${id}`, {
+      method: "DELETE",
+    });
+
+    const indexToDelete = products.findIndex((p) => p._id === id);
+    if (indexToDelete < 0) {
+      console.log("Unable to delete, item not found");
+      return;
+    }
+
+    products.splice(indexToDelete, 1);
+    setProductsArr([...products]);
   };
 
   const columns = [
@@ -69,11 +81,26 @@ export default function AdminProductsGrid({ products }) {
         <Tooltip title="More Details" placement="top" arrow>
           <Button
             onClick={() => {
-              console.log(params);
               navigate(`/product/${params.id}`);
             }}
           >
             <InfoIcon />
+          </Button>
+        </Tooltip>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      sortable: false,
+      renderCell: (params) => (
+        <Tooltip title="Delete" placement="top" arrow>
+          <Button
+            onClick={() => {
+              deleteProduct(params.id);
+            }}
+          >
+            <DeleteIcon />
           </Button>
         </Tooltip>
       ),
