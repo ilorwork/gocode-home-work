@@ -19,7 +19,7 @@ const Routing = () => {
   const [productsToRender, setProductsToRender] = useState([]);
 
   useEffect(() => {
-    console.log(productsArr.length);
+    console.log("productsArr.length", productsArr.length);
     setProductsToRender(productsArr);
   }, [productsArr]);
 
