@@ -199,7 +199,7 @@ const NewProduct = ({ products }) => {
     });
   };
 
-  const editProduct = () => {
+  const editProduct = async () => {
     const indexOfEdited = products.findIndex((p) => p._id === id);
 
     products[indexOfEdited].title = title;
@@ -207,6 +207,22 @@ const NewProduct = ({ products }) => {
     products[indexOfEdited].price = price;
     products[indexOfEdited].description = description;
     products[indexOfEdited].category = category;
+
+    const editedProduct = {
+      title: title,
+      price: price,
+      description: description,
+      category: category,
+      image: image,
+    };
+
+    await fetch(`http://127.0.0.1:8000/api/product/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedProduct),
+    });
   };
 
   return (
