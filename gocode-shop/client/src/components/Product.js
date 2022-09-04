@@ -11,9 +11,10 @@ const Product = ({
   const { addToCart, removeFromCart } = useContext(ShopContext);
   const navigate = useNavigate();
 
-  const countInCart = productsInCart.filter(
-    (element) => element.id === productInfo.id
-  ).length;
+  const countInCart = productsInCart.filter((element) => {
+    console.log(element);
+    return element._id === productInfo._id;
+  }).length;
 
   return (
     <div className={containerClass}>
@@ -21,14 +22,14 @@ const Product = ({
         <img src={productInfo.image} />
       </div>
       <div className="product-info">
-        <a onClick={() => navigate(`/product/${productInfo.id}`)}>
+        <a onClick={() => navigate(`/product/${productInfo._id}`)}>
           <h5>{productInfo.title}</h5>
         </a>
         <h6>${productInfo.price}</h6>
       </div>
       <div className="cart-btns-container">
         <button
-          onClick={() => addToCart(productInfo.id)}
+          onClick={() => addToCart(productInfo._id)}
           className="add-to-cart-btn tooltip"
           data-tooltip-content="Add To Cart"
         >
@@ -36,7 +37,7 @@ const Product = ({
         </button>
         <span>{countInCart}</span>
         <button
-          onClick={() => removeFromCart(productInfo.id)}
+          onClick={() => removeFromCart(productInfo._id)}
           className="remove-from-cart-btn tooltip"
           data-tooltip-content="Remove From Cart"
         >
@@ -45,7 +46,7 @@ const Product = ({
       </div>
       <button
         className="more-tetails-btn"
-        onClick={() => navigate(`/product/${productInfo.id}`)}
+        onClick={() => navigate(`/product/${productInfo._id}`)}
       >
         More Details
       </button>

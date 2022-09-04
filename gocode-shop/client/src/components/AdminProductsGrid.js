@@ -82,7 +82,7 @@ export default function AdminProductsGrid({ products }) {
 
   const productsRows = products.map((p) => {
     return {
-      id: p.id,
+      id: p._id,
       title: p.title,
       image: p.image,
       price: p.price,

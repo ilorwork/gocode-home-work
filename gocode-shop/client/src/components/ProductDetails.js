@@ -8,7 +8,8 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const fetchProduct = async () => {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const response = await fetch(`http://127.0.0.1:8000/api/product/${id}`);
     const data = await response.json();
     setProduct(data);
   };

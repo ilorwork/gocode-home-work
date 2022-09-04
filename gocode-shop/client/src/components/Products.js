@@ -6,7 +6,7 @@ import "./Products.css";
 const Products = ({ products, productsInCart, containerClass }) => {
   const productComponnents = products.map((product) => (
     <Product
-      key={product.id}
+      key={product._id}
       productInfo={product}
       productsInCart={productsInCart}
       containerClass={containerClass}

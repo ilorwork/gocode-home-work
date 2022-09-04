@@ -16,7 +16,6 @@ const NewProduct = ({ products }) => {
   const [isEdit, setIsEdit] = useState(false);
 
   const { id } = useParams();
-
   const isFirstRender = useIsFirstRender();
 
   const { getCategories, setProductsArr } = useContext(ShopContext);
@@ -24,7 +23,8 @@ const NewProduct = ({ products }) => {
   useEffect(() => {
     if (!products) return;
 
-    productToEdit = products.filter((p) => p.id === Number(id));
+    productToEdit = products.filter((p) => p._id === id);
+
     if (productToEdit.length) {
       setTitle(productToEdit[0].title);
       setImage(productToEdit[0].image);
@@ -175,9 +175,9 @@ const NewProduct = ({ products }) => {
     }
   };
 
-  const addNewProduct = () => {
+  const addNewProduct = async () => {
     const newProduct = {
-      id: Date.now(),
+      // id: Date.now(),
       title: title,
       price: price,
       description: description,
@@ -188,11 +188,19 @@ const NewProduct = ({ products }) => {
         count: 0,
       },
     };
-    setProductsArr((prev) => [newProduct, ...prev]);
+    // setProductsArr((prev) => [newProduct, ...prev]);
+
+    const res = await fetch("http://127.0.0.1:8000/api/products/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    });
   };
 
   const editProduct = () => {
-    const indexOfEdited = products.findIndex((p) => p.id === Number(id));
+    const indexOfEdited = products.findIndex((p) => p._id === id);
 
     products[indexOfEdited].title = title;
     products[indexOfEdited].image = image;

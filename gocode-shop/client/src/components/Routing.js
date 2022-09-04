@@ -44,7 +44,16 @@ const Routing = () => {
   };
 
   const fetchProducts = () => {
-    fetch("https://fakestoreapi.com/products")
+    // fetch("https://fakestoreapi.com/products")
+    fetch("http://127.0.0.1:8000/api/products")
+      /* , {
+      method: "GET",
+      credentials: "same-origin",
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000/",
+      },
+    } 
+    )*/
       .then((response) => response.json())
       .then((data) => setProductsArr(data));
   };
@@ -54,13 +63,13 @@ const Routing = () => {
   }, []);
 
   const addToCart = (id) => {
-    const productsToAdd = productsToRender.filter((item) => item.id === id);
+    const productsToAdd = productsToRender.filter((item) => item._id === id);
 
     setProductsInCart(productsInCart.concat(productsToAdd));
   };
 
   const removeFromCart = (id) => {
-    const productToRemove = productsInCart.filter((item) => item.id === id);
+    const productToRemove = productsInCart.filter((item) => item._id === id);
 
     if (!productToRemove.length) {
       console.log("item doesn't exist in the cart.");
