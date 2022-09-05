@@ -23,6 +23,15 @@ const TempDrawer = ({ productsInCart }) => {
     setOpen(isOpen);
   };
 
+  const getTotalPrice = () => {
+    const total = productsInCart.reduce(
+      (previousValue, currentValue) =>
+        previousValue + Number(currentValue.price),
+      0
+    );
+    return total;
+  };
+
   const list = () => (
     <Box
       sx={{ width: 350 }}
@@ -31,7 +40,7 @@ const TempDrawer = ({ productsInCart }) => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <div className="go-to-cart-container">
+        <div className="drawer-cart-header-container">
           <Link to={`/cart`}>
             <Button
               variant="contained"
@@ -41,6 +50,7 @@ const TempDrawer = ({ productsInCart }) => {
               Go To Cart
             </Button>
           </Link>
+          <p className="total-price-counter">Total: ${getTotalPrice()}</p>
         </div>
         <Cart
           productsInCart={productsInCart}

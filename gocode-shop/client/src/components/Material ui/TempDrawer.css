@@ -1,4 +1,11 @@
-.go-to-cart-container {
+.drawer-cart-header-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.total-price-counter {
+  border: 1px solid black;
+  padding: 0.6rem;
+  border-radius: 4px;
 }
