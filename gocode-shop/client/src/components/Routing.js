@@ -6,16 +6,14 @@ import Cart from "./Cart";
 import ShopContext from "../ShopContext";
 import ProductDetails from "./ProductDetails";
 import NewProduct from "./NewProduct";
-import Nav from "./Nav";
 import AdminPanel from "./AdminPanel";
+import MenuAppBar from "./AppBar";
+import BackToTopAppBar from "./BackToTopAppBar";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
-  const [filteredProductsByCategory, setFilteredProductsByCategory] = useState(
-    []
-  );
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [productsInCart, setProductsInCart] = useState([]);
-  const [sortedByPrice, setSortedByPrice] = useState([]);
   const [productsToRender, setProductsToRender] = useState([]);
 
   useEffect(() => {
@@ -23,30 +21,30 @@ const Routing = () => {
     setProductsToRender(productsArr);
   }, [productsArr]);
 
-  useEffect(() => {
-    setProductsToRender(filteredProductsByCategory);
-  }, [filteredProductsByCategory]);
+  const filterByCat = (category, range) => {
+    const products = productsArr.filter(
+      (item) => range[0] <= item.price && item.price <= range[1]
+    );
 
-  useEffect(() => {
-    setProductsToRender(sortedByPrice);
-  }, [sortedByPrice]);
-
-  const filterByCat = (category) => {
     if (category === "All") {
-      setFilteredProductsByCategory(productsArr);
+      setProductsToRender(products);
+      setSelectedCategory("All");
       return;
     }
 
-    const filteredArr = productsArr.filter(
+    const filteredArr = products.filter(
       (product) => product.category === category
     );
-    setFilteredProductsByCategory(filteredArr);
+    setProductsToRender(filteredArr);
+    setSelectedCategory(category);
   };
 
-  const fetchProducts = () => {
+  const fetchProducts = async () => {
     // fetch("https://fakestoreapi.com/products")
-    fetch("http://127.0.0.1:8000/api/products")
-      /* , {
+    const res = await fetch("http://127.0.0.1:8000/api/products");
+    const data = await res.json();
+    setProductsArr(data);
+    /* , {
       method: "GET",
       credentials: "same-origin",
       headers: {
@@ -54,8 +52,8 @@ const Routing = () => {
       },
     } 
     )*/
-      .then((response) => response.json())
-      .then((data) => setProductsArr(data));
+    // .then((response) => response.json())
+    // .then((data) => setProductsArr(data));
   };
 
   useEffect(() => {
@@ -93,15 +91,17 @@ const Routing = () => {
   };
 
   const sortByPrice = (range) => {
+    const filteredArr = productsArr.filter(
+      (product) => product.category === selectedCategory
+    );
+
     const productsToSort =
-      filteredProductsByCategory.length === 0
-        ? productsArr
-        : filteredProductsByCategory;
+      selectedCategory === "All" ? productsArr : filteredArr;
 
     const products = productsToSort.filter(
       (item) => range[0] <= item.price && item.price <= range[1]
     );
-    setSortedByPrice(products);
+    setProductsToRender(products);
   };
 
   return (
@@ -115,16 +115,13 @@ const Routing = () => {
       }}
     >
       <BrowserRouter>
-        <Nav
-          products={productsArr}
-          filterByCat={filterByCat}
-          productsInCart={productsInCart}
-        />
+        <BackToTopAppBar productsInCart={productsInCart} />
         <Routes>
           <Route
             path="/"
             element={
               <App
+                filterByCat={filterByCat}
                 productsInCart={productsInCart}
                 productsToRender={productsToRender}
               />

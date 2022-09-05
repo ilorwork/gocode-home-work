@@ -54,7 +54,7 @@ const TempDrawer = ({ productsInCart }) => {
     <div>
       {
         <React.Fragment>
-          <Button variant="contained" onClick={toggleDrawer(true)}>
+          <Button color="inherit" onClick={toggleDrawer(true)}>
             <Badge
               color="secondary"
               badgeContent={productsInCart.length}
