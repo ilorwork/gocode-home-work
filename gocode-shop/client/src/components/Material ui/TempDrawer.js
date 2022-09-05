@@ -42,13 +42,19 @@ const TempDrawer = ({ productsInCart }) => {
       <List>
         <div className="drawer-cart-header-container">
           <Link to={`/cart`}>
-            <Button
-              variant="contained"
-              className="go-to-cart-btn"
-              onClick={toggleDrawer(false)}
+            <Badge
+              color="secondary"
+              badgeContent={productsInCart.length}
+              showZero
             >
-              Go To Cart
-            </Button>
+              <Button
+                variant="contained"
+                className="go-to-cart-btn"
+                onClick={toggleDrawer(false)}
+              >
+                Go To Cart
+              </Button>
+            </Badge>
           </Link>
           <p className="total-price-counter">Total: ${getTotalPrice()}</p>
         </div>
