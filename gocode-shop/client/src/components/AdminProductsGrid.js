@@ -13,7 +13,7 @@ export default function AdminProductsGrid({ products }) {
   const { setProductsArr } = useContext(ShopContext);
 
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:8000/api/product/${id}`, {
+    await fetch(`http://localhost:7000/api/product/${id}`, {
       method: "DELETE",
     });
 

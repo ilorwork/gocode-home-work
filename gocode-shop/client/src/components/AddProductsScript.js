@@ -14,7 +14,7 @@ const AddProductsScript = () => {
     }
 
     const addProduct = async (product) => {
-      await fetch("http://127.0.0.1:8000/api/products/", {
+      await fetch("http://localhost:7000/api/products/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

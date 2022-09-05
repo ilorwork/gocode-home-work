@@ -23,11 +23,11 @@ const addProducts = () => {
   const category = "electronics";
 
   function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min) + min);
   }
 
   const addProduct = async (product) => {
-    await fetch("http://127.0.0.1:8000/api/products/", {
+    await fetch("http://localhost:7000/api/products/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

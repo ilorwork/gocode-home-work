@@ -188,7 +188,7 @@ const NewProduct = ({ products }) => {
       },
     };
 
-    const res = await fetch("http://127.0.0.1:8000/api/products/", {
+    const res = await fetch("http://localhost:7000/api/products/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -217,7 +217,7 @@ const NewProduct = ({ products }) => {
       image: image,
     };
 
-    await fetch(`http://127.0.0.1:8000/api/product/${id}`, {
+    await fetch(`http://localhost:7000/api/product/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

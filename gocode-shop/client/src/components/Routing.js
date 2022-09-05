@@ -41,7 +41,7 @@ const Routing = () => {
 
   const fetchProducts = async () => {
     // fetch("https://fakestoreapi.com/products")
-    const res = await fetch("http://127.0.0.1:8000/api/products");
+    const res = await fetch("http://localhost:7000/api/products");
     const data = await res.json();
     setProductsArr(data);
     /* , {
