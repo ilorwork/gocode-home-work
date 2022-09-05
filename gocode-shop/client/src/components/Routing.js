@@ -9,6 +9,7 @@ import NewProduct from "./NewProduct";
 import AdminPanel from "./AdminPanel";
 import MenuAppBar from "./AppBar";
 import BackToTopAppBar from "./BackToTopAppBar";
+import config from "../config.json";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
@@ -41,7 +42,7 @@ const Routing = () => {
 
   const fetchProducts = async () => {
     // fetch("https://fakestoreapi.com/products")
-    const res = await fetch("http://localhost:7000/api/products");
+    const res = await fetch(`${config.BaseUrl}/api/products`);
     const data = await res.json();
     setProductsArr(data);
     /* , {

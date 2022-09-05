@@ -7,13 +7,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShopContext from "../ShopContext";
+import config from "../config.json";
 
 export default function AdminProductsGrid({ products }) {
   const navigate = useNavigate();
   const { setProductsArr } = useContext(ShopContext);
 
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:7000/api/product/${id}`, {
+    await fetch(`${config.BaseUrl}/api/product/${id}`, {
       method: "DELETE",
     });
 

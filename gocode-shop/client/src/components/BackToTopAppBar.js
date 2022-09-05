@@ -37,7 +37,6 @@ function ScrollTop({ children }) {
 }
 
 export default function BackToTopAppBar(props) {
-  console.log("props", props);
   return (
     <React.Fragment>
       <MenuAppBar productsInCart={props.productsInCart} />

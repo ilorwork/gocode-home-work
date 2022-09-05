@@ -4,6 +4,7 @@ import "./NewProduct.css";
 import ShopContext from "../ShopContext";
 import Input from "./Input";
 import { useParams } from "react-router-dom";
+import config from "../config.json";
 
 const NewProduct = ({ products }) => {
   const [title, setTitle] = useState("");
@@ -188,7 +189,7 @@ const NewProduct = ({ products }) => {
       },
     };
 
-    const res = await fetch("http://localhost:7000/api/products/", {
+    const res = await fetch(`${config.BaseUrl}/api/products/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -217,7 +218,7 @@ const NewProduct = ({ products }) => {
       image: image,
     };
 
-    await fetch(`http://localhost:7000/api/product/${id}`, {
+    await fetch(`${config.BaseUrl}/api/product/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -13,11 +13,9 @@ const FilterBar = ({ products, filterByCat }) => {
 
   useEffect(() => {
     if (maxRangeOnSlider.current !== 0 || !products.length) return;
-    console.log("maxRangeOnSlider", maxRangeOnSlider);
 
     const prices = products.map((p) => p.price);
     const maxVal = Math.max(...prices);
-    console.log("maxVal", maxVal);
     setRangeValue([0, maxVal]);
     // setMaxRangeOnSlider(maxVal);
     maxRangeOnSlider.current = maxVal;

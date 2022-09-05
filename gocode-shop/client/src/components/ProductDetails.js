@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HalfRating from "./HalfRating";
 import "./ProductDetails.css";
+import config from "../config.json";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
@@ -9,7 +10,7 @@ const ProductDetails = () => {
 
   const fetchProduct = async () => {
     // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-    const response = await fetch(`http://localhost:7000/api/product/${id}`);
+    const response = await fetch(`${config.BaseUrl}/api/product/${id}`);
     const data = await response.json();
     setProduct(data);
   };

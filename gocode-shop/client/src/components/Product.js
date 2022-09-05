@@ -12,7 +12,6 @@ const Product = ({
   const navigate = useNavigate();
 
   const countInCart = productsInCart.filter((element) => {
-    console.log(element);
     return element._id === productInfo._id;
   }).length;
 
