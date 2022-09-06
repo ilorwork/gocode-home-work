@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import "./FilterBar.css";
 import RangeSlider from "./RangeSlider";
 import ShopContext from "../ShopContext";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const FilterBar = ({ products, filterByCat }) => {
   const [rangeValue, setRangeValue] = useState([0, 0]);
@@ -28,9 +29,9 @@ const FilterBar = ({ products, filterByCat }) => {
   const categories = getCategories();
 
   const options = categories.map((cat, index) => (
-    <option key={index} value={cat}>
+    <MenuItem key={index} value={cat}>
       {cat}
-    </option>
+    </MenuItem>
   ));
 
   return (
@@ -42,17 +43,19 @@ const FilterBar = ({ products, filterByCat }) => {
           maxRangeOnSlider={maxRangeOnSlider.current}
         />
       )}
-      <div className="collection-sort">
-        <label>Filter by:</label>
-        <select
+      <FormControl sx={{ m: 1, minWidth: 180 }}>
+        <InputLabel>Filter by</InputLabel>
+        <Select
+          // value={age}
+          label="FILTER BY"
           onChange={(e) => {
             filterByCat(e.target.value, rangeValue);
           }}
         >
-          <option value={"All"}>All</option>
+          <MenuItem value={"All"}>All</MenuItem>
           {options}
-        </select>
-      </div>
+        </Select>
+      </FormControl>
     </nav>
   );
 };
