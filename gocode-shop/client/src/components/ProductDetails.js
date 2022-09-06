@@ -9,7 +9,6 @@ const ProductDetails = () => {
   const { id } = useParams();
 
   const fetchProduct = async () => {
-    // const response = await fetch(`https://fakestoreapi.com/products/${id}`);
     const response = await fetch(`${config.BaseUrl}/api/product/${id}`);
     const data = await response.json();
     setProduct(data);

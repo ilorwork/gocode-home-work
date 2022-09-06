@@ -50,7 +50,7 @@ const NewProduct = ({ products }) => {
         rootCause: "title",
       });
     } else {
-      if (error.rootCause === "title") {
+      if (error.rootCause === "title" || error.rootCause === "submit") {
         setError({ errorText: null, rootCause: null });
       }
     }
@@ -64,7 +64,7 @@ const NewProduct = ({ products }) => {
         rootCause: "image",
       });
     } else {
-      if (error.rootCause === "image") {
+      if (error.rootCause === "image" || error.rootCause === "submit") {
         setError({ errorText: null, rootCause: null });
       }
     }
@@ -94,7 +94,7 @@ const NewProduct = ({ products }) => {
           rootCause: "price",
         });
       } else {
-        if (error.rootCause === "price") {
+        if (error.rootCause === "price" || error.rootCause === "submit") {
           setError({ errorText: null, rootCause: null });
         }
       }
@@ -115,7 +115,7 @@ const NewProduct = ({ products }) => {
         rootCause: "description",
       });
     } else {
-      if (error.rootCause === "description") {
+      if (error.rootCause === "description" || error.rootCause === "submit") {
         setError({ errorText: null, rootCause: null });
       }
     }
@@ -129,7 +129,7 @@ const NewProduct = ({ products }) => {
         rootCause: "category",
       });
     } else {
-      if (error.rootCause === "category") {
+      if (error.rootCause === "category" || error.rootCause === "submit") {
         setError({ errorText: null, rootCause: null });
       }
     }
@@ -230,7 +230,6 @@ const NewProduct = ({ products }) => {
   return (
     <div className="page-container">
       <div className="form-container">
-        {/* <h1 className="form-header">New Product</h1> */}
         <label className="mendatory">Title</label>
         <input
           value={title}
@@ -280,7 +279,12 @@ const NewProduct = ({ products }) => {
           {options}
         </select>
 
-        <button className="submit-form" type="submit" onClick={checkForm}>
+        <button
+          className="submit-form"
+          disabled={!!error.errorText}
+          type="submit"
+          onClick={checkForm}
+        >
           {isEdit ? "Update" : "Create"}
         </button>
         <p className="error-text">{error.errorText}</p>

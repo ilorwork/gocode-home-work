@@ -34,7 +34,7 @@ const FilterBar = ({ products, filterByCat }) => {
   ));
 
   return (
-    <nav className="top-nav-bar">
+    <nav className="filtering-nav-bar">
       {products && (
         <RangeSlider
           value={rangeValue}

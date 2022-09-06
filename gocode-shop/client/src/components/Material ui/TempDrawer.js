@@ -4,10 +4,11 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CloseIcon from "@mui/icons-material/Close";
 import Cart from "../Cart";
 import { Link } from "react-router-dom";
 import "./TempDrawer.css";
-import { Badge } from "@mui/material";
+import { Badge, Tooltip } from "@mui/material";
 
 const TempDrawer = ({ productsInCart }) => {
   const [open, setOpen] = useState(false);
@@ -34,13 +35,23 @@ const TempDrawer = ({ productsInCart }) => {
 
   const list = () => (
     <Box
-      sx={{ width: 350 }}
+      sx={{ width: 320, mt: 0.5 }}
       role="presentation"
       // onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List>
         <div className="drawer-cart-header-container">
+          <Tooltip title="close" placement="bottom-end" arrow>
+            <Button
+              sx={{ m: -5 }}
+              size="small"
+              variant=""
+              onClick={toggleDrawer(false)}
+            >
+              <CloseIcon />
+            </Button>
+          </Tooltip>
           <Link to={`/cart`}>
             <Badge
               color="secondary"

@@ -1,4 +1,4 @@
-.top-nav-bar {
+.filtering-nav-bar {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -19,11 +19,24 @@
   font-size: 10px;
 }
 
-/* @media (max-width: 480px) {
-  .top-nav-bar {
-    flex-direction: column;
+@media (max-width: 1200px) {
+  .filtering-nav-bar {
+    margin: 0 10%;
   }
-} */
+}
+
+@media (max-width: 620px) {
+  .filtering-nav-bar {
+    margin: 0 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .filtering-nav-bar {
+    flex-direction: column;
+    margin: 0 0;
+  }
+}
 
 .collection-sort > select {
   min-width: 10rem;
