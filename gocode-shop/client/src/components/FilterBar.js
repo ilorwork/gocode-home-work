@@ -5,14 +5,14 @@ import ShopContext from "../ShopContext";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const FilterBar = ({ products, filterByCat }) => {
-  const [rangeValue, setRangeValue] = useState([0, 10000]);
+  const [rangeValue, setRangeValue] = useState([0, 1000]);
   const [selectedCat, setSelectedCat] = useState("All");
 
   const { getCategories } = useContext(ShopContext);
 
   useEffect(() => {
     console.log("rendering bar", selectedCat);
-    filterByCat(selectedCat, [0, 10000]);
+    filterByCat(selectedCat, [0, 1000]);
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -33,7 +33,8 @@ const FilterBar = ({ products, filterByCat }) => {
         <RangeSlider
           value={rangeValue}
           handleChange={handleChange}
-          maxRangeOnSlider={10000}
+          maxRangeOnSlider={1000}
+          selectedCat={selectedCat}
         />
       )}
       <FormControl sx={{ m: 1, minWidth: 180 }}>

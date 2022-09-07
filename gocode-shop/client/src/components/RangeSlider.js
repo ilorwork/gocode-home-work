@@ -8,11 +8,16 @@ function valuetext(value) {
   return `${value}°C`;
 }
 
-export default function RangeSlider({ value, handleChange, maxRangeOnSlider }) {
+export default function RangeSlider({
+  value,
+  handleChange,
+  maxRangeOnSlider,
+  selectedCat,
+}) {
   const { sortByPrice } = useContext(ShopContext);
 
   useEffect(() => {
-    sortByPrice(value);
+    sortByPrice(value, selectedCat);
   }, [value]);
 
   return (

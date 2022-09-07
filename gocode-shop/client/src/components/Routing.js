@@ -12,7 +12,6 @@ import config from "../config.json";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [productsInCart, setProductsInCart] = useState([]);
   const [productsToRender, setProductsToRender] = useState([]);
 
@@ -28,7 +27,6 @@ const Routing = () => {
 
     if (category === "All") {
       setProductsToRender(products);
-      setSelectedCategory("All");
       return;
     }
 
@@ -36,7 +34,6 @@ const Routing = () => {
       (product) => product.category === category
     );
     setProductsToRender(filteredArr);
-    setSelectedCategory(category);
   };
 
   const fetchProducts = async () => {
@@ -78,13 +75,12 @@ const Routing = () => {
       .filter((value, index, array) => array.indexOf(value) === index);
   };
 
-  const sortByPrice = (range) => {
+  const sortByPrice = (range, selectedCat) => {
     const filteredArr = productsArr.filter(
-      (product) => product.category === selectedCategory
+      (product) => product.category === selectedCat
     );
 
-    const productsToSort =
-      selectedCategory === "All" ? productsArr : filteredArr;
+    const productsToSort = selectedCat === "All" ? productsArr : filteredArr;
 
     const products = productsToSort.filter(
       (item) => range[0] <= item.price && item.price <= range[1]
