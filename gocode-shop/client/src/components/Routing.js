@@ -99,7 +99,10 @@ const Routing = () => {
       }}
     >
       <BrowserRouter>
-        <BackToTopAppBar productsInCart={productsInCart} />
+        <BackToTopAppBar
+          productsInCart={productsInCart}
+          setProductsInCart={setProductsInCart}
+        />
         <Routes>
           <Route
             path="/"

@@ -8,9 +8,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import Cart from "../Cart";
 import { useNavigate } from "react-router-dom";
 import "./TempDrawer.css";
-import { Badge, Tooltip } from "@mui/material";
+import { Badge, BottomNavigation, Paper, Tooltip } from "@mui/material";
 
-const TempDrawer = ({ productsInCart }) => {
+const TempDrawer = ({ productsInCart, setProductsInCart }) => {
   const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -63,7 +63,6 @@ const TempDrawer = ({ productsInCart }) => {
           >
             <Button
               variant="contained"
-              className="go-to-cart-btn"
               onClick={(e) => goToCartOnClickHandler(e)}
             >
               Go To Cart
@@ -76,6 +75,23 @@ const TempDrawer = ({ productsInCart }) => {
           containerClass="product-card-row"
         />
       </List>
+      {productsInCart.length !== 0 && (
+        <Paper
+          sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}
+          elevation={3}
+        >
+          <BottomNavigation>
+            <Button
+              variant="contained"
+              color="error"
+              sx={{ my: 1 }}
+              onClick={() => setProductsInCart([])}
+            >
+              Clear Cart
+            </Button>
+          </BottomNavigation>
+        </Paper>
+      )}
     </Box>
   );
 

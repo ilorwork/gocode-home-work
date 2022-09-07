@@ -12,7 +12,7 @@ import { Button } from "@mui/material";
 import TempDrawer from "./Material ui/TempDrawer";
 import AddProductsScript from "./AddProductsScript";
 
-export default function MenuAppBar({ productsInCart }) {
+export default function MenuAppBar({ productsInCart, setProductsInCart }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const navigate = useNavigate();
@@ -77,7 +77,10 @@ export default function MenuAppBar({ productsInCart }) {
             {headerView()}
           </Typography>
 
-          <TempDrawer productsInCart={productsInCart} />
+          <TempDrawer
+            productsInCart={productsInCart}
+            setProductsInCart={setProductsInCart}
+          />
 
           <IconButton
             size="large"
