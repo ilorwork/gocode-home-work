@@ -6,18 +6,17 @@ import List from "@mui/material/List";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import Cart from "../Cart";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./TempDrawer.css";
 import { Badge, Tooltip } from "@mui/material";
 
 const TempDrawer = ({ productsInCart }) => {
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (isOpen) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
+  const navigate = useNavigate();
+
+  const toggleDrawer = (e, isOpen) => {
+    if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
       return;
     }
 
@@ -33,12 +32,17 @@ const TempDrawer = ({ productsInCart }) => {
     return total;
   };
 
+  const goToCartOnClickHandler = (e) => {
+    toggleDrawer(e, false);
+    navigate(`/cart`);
+  };
+
   const list = () => (
     <Box
       sx={{ width: 320, mt: 0.5 }}
       role="presentation"
       // onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
+      onKeyDown={(e) => toggleDrawer(e, false)}
     >
       <List>
         <div className="drawer-cart-header-container">
@@ -47,26 +51,24 @@ const TempDrawer = ({ productsInCart }) => {
               sx={{ m: -5 }}
               size="small"
               variant=""
-              onClick={toggleDrawer(false)}
+              onClick={(e) => toggleDrawer(e, false)}
             >
               <CloseIcon />
             </Button>
           </Tooltip>
-          <Link to={`/cart`}>
-            <Badge
-              color="secondary"
-              badgeContent={productsInCart.length}
-              showZero
+          <Badge
+            color="secondary"
+            badgeContent={productsInCart.length}
+            showZero
+          >
+            <Button
+              variant="contained"
+              className="go-to-cart-btn"
+              onClick={(e) => goToCartOnClickHandler(e)}
             >
-              <Button
-                variant="contained"
-                className="go-to-cart-btn"
-                onClick={toggleDrawer(false)}
-              >
-                Go To Cart
-              </Button>
-            </Badge>
-          </Link>
+              Go To Cart
+            </Button>
+          </Badge>
           <p className="total-price-counter">Total: ${getTotalPrice()}</p>
         </div>
         <Cart
@@ -81,7 +83,7 @@ const TempDrawer = ({ productsInCart }) => {
     <div>
       {
         <React.Fragment>
-          <Button color="inherit" onClick={toggleDrawer(true)}>
+          <Button color="inherit" onClick={(e) => toggleDrawer(e, true)}>
             <Badge
               color="secondary"
               badgeContent={productsInCart.length}
@@ -90,7 +92,11 @@ const TempDrawer = ({ productsInCart }) => {
               <ShoppingCartIcon />
             </Badge>
           </Button>
-          <Drawer anchor={"right"} open={open} onClose={toggleDrawer(false)}>
+          <Drawer
+            anchor={"right"}
+            open={open}
+            onClose={(e) => toggleDrawer(e, false)}
+          >
             {list()}
           </Drawer>
         </React.Fragment>

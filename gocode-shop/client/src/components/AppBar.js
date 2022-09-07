@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import TempDrawer from "./Material ui/TempDrawer";
 import AddProductsScript from "./AddProductsScript";
@@ -65,11 +65,13 @@ export default function MenuAppBar({ productsInCart }) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
         <Toolbar>
-          <Link to="/">
-            <Button variant="contained" color="secondary">
-              Shopy
-            </Button>
-          </Link>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate(`/`)}
+          >
+            Shopy
+          </Button>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 3 }}>
             {headerView()}
