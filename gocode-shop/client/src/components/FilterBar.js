@@ -5,22 +5,15 @@ import ShopContext from "../ShopContext";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const FilterBar = ({ products, filterByCat }) => {
-  const [rangeValue, setRangeValue] = useState([0, 0]);
-  // const [maxRangeOnSlider, setMaxRangeOnSlider] = useState("");
+  const [rangeValue, setRangeValue] = useState([0, 10000]);
+  const [selectedCat, setSelectedCat] = useState("All");
 
   const { getCategories } = useContext(ShopContext);
 
-  const maxRangeOnSlider = useRef(0);
-
   useEffect(() => {
-    if (maxRangeOnSlider.current !== 0 || !products.length) return;
-
-    const prices = products.map((p) => p.price);
-    const maxVal = Math.max(...prices);
-    setRangeValue([0, maxVal]);
-    // setMaxRangeOnSlider(maxVal);
-    maxRangeOnSlider.current = maxVal;
-  }, [products]);
+    console.log("rendering bar", selectedCat);
+    filterByCat(selectedCat, [0, 10000]);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setRangeValue(newValue);
@@ -40,15 +33,16 @@ const FilterBar = ({ products, filterByCat }) => {
         <RangeSlider
           value={rangeValue}
           handleChange={handleChange}
-          maxRangeOnSlider={maxRangeOnSlider.current}
+          maxRangeOnSlider={10000}
         />
       )}
       <FormControl sx={{ m: 1, minWidth: 180 }}>
         <InputLabel>Filter by</InputLabel>
         <Select
-          // value={age}
+          value={selectedCat}
           label="FILTER BY"
           onChange={(e) => {
+            setSelectedCat(e.target.value);
             filterByCat(e.target.value, rangeValue);
           }}
         >

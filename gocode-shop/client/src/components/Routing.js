@@ -23,7 +23,7 @@ const Routing = () => {
 
   const filterByCat = (category, range) => {
     const products = productsArr.filter(
-      (item) => range[0] <= item.price && item.price <= range[1]
+      (item) => range[0] <= Number(item.price) && Number(item.price) <= range[1]
     );
 
     if (category === "All") {
