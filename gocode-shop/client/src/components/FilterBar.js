@@ -38,10 +38,10 @@ const FilterBar = ({ products, filterByCat }) => {
         />
       )}
       <FormControl sx={{ m: 1, minWidth: 180 }}>
-        <InputLabel>Filter by</InputLabel>
+        <InputLabel>Category</InputLabel>
         <Select
           value={selectedCat}
-          label="FILTER BY"
+          label="CATEGORY"
           onChange={(e) => {
             setSelectedCat(e.target.value);
             filterByCat(e.target.value, rangeValue);
