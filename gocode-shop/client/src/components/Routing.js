@@ -7,7 +7,6 @@ import ShopContext from "../ShopContext";
 import ProductDetails from "./ProductDetails";
 import NewProduct from "./NewProduct";
 import AdminPanel from "./AdminPanel";
-import MenuAppBar from "./AppBar";
 import BackToTopAppBar from "./BackToTopAppBar";
 import config from "../config.json";
 
@@ -41,20 +40,9 @@ const Routing = () => {
   };
 
   const fetchProducts = async () => {
-    // fetch("https://fakestoreapi.com/products")
     const res = await fetch(`${config.BaseUrl}/api/products`);
     const data = await res.json();
     setProductsArr(data);
-    /* , {
-      method: "GET",
-      credentials: "same-origin",
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000/",
-      },
-    } 
-    )*/
-    // .then((response) => response.json())
-    // .then((data) => setProductsArr(data));
   };
 
   useEffect(() => {
@@ -76,7 +64,6 @@ const Routing = () => {
     }
     const index = productsInCart.lastIndexOf(productToRemove[0]);
 
-    // Had to use slice because it doesn't change the original arr.
     const result = [
       ...productsInCart.slice(0, index),
       ...productsInCart.slice(index + 1),
