@@ -14,19 +14,12 @@ export default function Registration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newUser2 = {
+    const newUser = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password,
     };
-    const newUser = {
-      firstName: "firstName",
-      lastName: "lastName",
-      email: "email",
-      password: "password",
-    };
-    // console.log(newUser);
 
     await fetch(`${config.BaseUrl}/api/users/`, {
       method: "POST",
