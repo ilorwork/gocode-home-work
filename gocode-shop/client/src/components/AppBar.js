@@ -29,6 +29,11 @@ export default function MenuAppBar({ productsInCart, setProductsInCart }) {
 
   const onClickProfile = () => {
     profileClickCount.current = profileClickCount.current + 1;
+    console.log("profileClickCount.current", profileClickCount.current);
+
+    setTimeout(() => {
+      profileClickCount.current = 0;
+    }, 4000);
     if (profileClickCount.current > 2) {
       alert(
         "You've descovered a secret. new products have been added. refresh to reveal them"
@@ -38,6 +43,11 @@ export default function MenuAppBar({ productsInCart, setProductsInCart }) {
       // window.location.reload(false);
     }
     handleClose();
+  };
+
+  const onClickLogin = () => {
+    handleClose();
+    navigate(`/registration`);
   };
 
   const onClickManageProducts = () => {
@@ -58,8 +68,12 @@ export default function MenuAppBar({ productsInCart, setProductsInCart }) {
       return "Manage Your Products";
     } else if (location.pathname.startsWith("/editProduct/")) {
       return "Edit Product";
+    } else if (location.pathname === "/registration") {
+      return "Registration";
     }
   };
+
+  const logedIn = true;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -107,7 +121,12 @@ export default function MenuAppBar({ productsInCart, setProductsInCart }) {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={onClickProfile}>Profile</MenuItem>
+            {logedIn ? (
+              <MenuItem onClick={onClickProfile}>Profile</MenuItem>
+            ) : (
+              <MenuItem onClick={onClickLogin}>Login/Register</MenuItem>
+            )}
+
             <MenuItem onClick={onClickManageProducts}>Manage Products</MenuItem>
           </Menu>
         </Toolbar>

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { productAllowedUpdates } = require("./constants/allowedUpdates");
 const serverResponse = require("./utils/serverResponse");
+const User = require("./UserModel");
 const app = express();
 
 require("dotenv").config();
@@ -30,6 +31,30 @@ const productScema = new mongoose.Schema({
 const Product = mongoose.model("Product", productScema);
 
 // Routs
+app.get("/api/users", async (req, res) => {
+  try {
+    const allUsers = await User.find({});
+    return serverResponse(res, 200, allUsers);
+  } catch (e) {
+    return serverResponse(res, 500, {
+      message: "internal error has accured " + e,
+    });
+  }
+});
+
+app.post("/api/users", async (req, res) => {
+  try {
+    const user = new User({ ...req.body });
+
+    await user.save();
+    return serverResponse(res, 200, user);
+  } catch (e) {
+    return serverResponse(res, 500, {
+      message: "internal error occured" + e,
+    });
+  }
+});
+
 app.get("/api/products", async (req, res) => {
   try {
     // TODO: The find is necassery here?

@@ -1,4 +1,4 @@
 {
-  "BaseUrl": "https://shopy.onrender.com",
-  "_BaseUrl": "http://localhost:7000"
+  "_BaseUrl": "https://shopy.onrender.com",
+  "BaseUrl": "http://localhost:7000"
 }

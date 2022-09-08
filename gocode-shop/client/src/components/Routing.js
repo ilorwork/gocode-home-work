@@ -9,6 +9,7 @@ import NewProduct from "./NewProduct";
 import AdminPanel from "./AdminPanel";
 import BackToTopAppBar from "./BackToTopAppBar";
 import config from "../config.json";
+import Registration from "./Registration";
 
 const Routing = () => {
   const [productsArr, setProductsArr] = useState([]);
@@ -128,6 +129,7 @@ const Routing = () => {
             path="/adminPanel"
             element={<AdminPanel products={productsArr} />}
           />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </ShopContext.Provider>
