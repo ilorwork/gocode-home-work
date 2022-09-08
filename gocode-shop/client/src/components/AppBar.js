@@ -73,7 +73,7 @@ export default function MenuAppBar({ productsInCart, setProductsInCart }) {
     }
   };
 
-  const logedIn = true;
+  const logedIn = false;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
