@@ -13,10 +13,9 @@ app.use(cors());
 app.use(express.static("client/build"));
 
 // MODEL
-//TODO: add default vals to rating
 const ratingScema = new mongoose.Schema({
-  rate: Number,
-  count: Number,
+  rate: { type: Number, default: 0 },
+  count: { type: Number, default: 0 },
 });
 
 const productScema = new mongoose.Schema({
